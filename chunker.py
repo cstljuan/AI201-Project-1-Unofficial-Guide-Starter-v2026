@@ -22,6 +22,7 @@ to it, write down what you saw, and move on. That's a real observation about
 your pipeline, not giving up.
 """
 
+import re
 from dataclasses import dataclass
 
 import config
@@ -80,24 +81,100 @@ def fallback_split(
     return chunks
 
 
+def _split_title(text: str) -> tuple[str, str]:
+    """
+    Pull the `# Title` line off the top of a document.
+
+    Returns (title, the rest). If there is no `# ` line, the title comes back
+    empty and the text is unchanged.
+    """
+    lines = text.splitlines()
+    if lines and lines[0].startswith("# "):
+        return lines[0][2:].strip(), "\n".join(lines[1:]).strip()
+    return "", text.strip()
+
+
+def _sections(text: str) -> list[tuple[str, str]]:
+    """
+    Break a document into (heading, body) pairs on its `## ` lines.
+
+    Whatever sits before the first `## ` comes back as ("", preamble), so the
+    introduction to each guide is kept rather than thrown away. A document with
+    no `## ` lines at all comes back as one ("", whole text) pair, which is why
+    this is safe to run over a corpus that isn't structured this way.
+    """
+    parts = re.split(r"^## +", text, flags=re.MULTILINE)
+
+    sections = [("", parts[0].strip())]
+    for part in parts[1:]:
+        heading, _, body = part.partition("\n")
+        sections.append((heading.strip(), body.strip()))
+
+    return [(heading, body) for heading, body in sections if body]
+
+
 def split_documents(documents: list[Document]) -> list[Chunk]:
     """
-    Split documents into chunks. ⚠️ REPLACE THE BODY OF THIS IN MILESTONE 3.
+    Split each document at its `## ` section headings.
 
-    Right now it just calls the fallback. That is the plain, generic behaviour
-    the brief is talking about.
+    Why headings and not a character count: every document in `city_guides` is
+    divided into labelled sections — getting there, getting around, where to
+    eat — and the longest of those sections in the whole corpus is 709
+    characters, comfortably inside one chunk. A section is already the unit a
+    question gets asked about, so cutting anywhere else only does damage. The
+    fixed-size chunker this replaces was splitting mid-word.
 
-    When you write your own strategy, set `produced_by` to
-    "chunker.py::split_documents" so your README's Sample Chunks section names
-    the right function. `app.py chunks` prints that string for you.
+    Every chunk is prefixed with its document title and section heading:
 
-    Things worth thinking about before you write any code:
-      - Are your documents short posts or long guides?
-      - Is the useful information in one sentence, or spread over a paragraph?
-      - Would splitting on paragraph breaks keep more thoughts intact than
-        splitting on a character count?
+        Elder Ness — Eat and drink
+
+        One pub, serving food 12 to 2 and 6 to 8, closed Mondays...
+
+    That prefix is not decoration. The body of that section never says "Elder
+    Ness" anywhere — the town name lives only in the `# ` title at the top of
+    the file. Without the prefix, every town's eating section embeds to
+    almost the same place and a question naming a town can't pick between
+    them.
     """
-    return fallback_split(documents)
+    chunks: list[Chunk] = []
+
+    for doc in documents:
+        title, body = _split_title(doc.text)
+        if not title:
+            title = doc.source.rsplit(".", 1)[0].replace("_", " ")
+
+        index = 0
+        for heading, section in _sections(body):
+            header = f"{title} — {heading}" if heading else title
+            text = f"{header}\n\n{section}"
+
+            # Nothing in city_guides reaches this, but a section longer than
+            # CHUNK_SIZE would otherwise sail through as one oversized chunk.
+            # Fall back to fixed-size windows for that section alone, keeping
+            # the header on every piece so each one still names its town.
+            if len(text) > config.CHUNK_SIZE:
+                room = config.CHUNK_SIZE - len(header) - 2
+                pieces = fallback_split(
+                    [Document(source=doc.source, text=section)],
+                    chunk_size=room,
+                    overlap=min(config.CHUNK_OVERLAP, room // 2),
+                )
+                bodies = [p.text for p in pieces]
+            else:
+                bodies = [section]
+
+            for piece in bodies:
+                chunks.append(
+                    Chunk(
+                        text=f"{header}\n\n{piece}",
+                        source=doc.source,
+                        index=index,
+                        produced_by="chunker.py::split_documents",
+                    )
+                )
+                index += 1
+
+    return chunks
 
 
 def describe(chunks: list[Chunk]) -> str:
