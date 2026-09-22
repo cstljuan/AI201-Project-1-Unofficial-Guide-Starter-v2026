@@ -1,25 +1,23 @@
 """
 Stage 2 of the pipeline: splitting documents into chunks.
 
-⚠️ THIS IS THE FILE YOU CHANGE IN MILESTONE 3.
+`split_documents` splits each guide at its `##` section headings and prefixes
+every chunk with the document title and section name. Milestone 3 replaced the
+starter's fixed-size chunker, which cut on a character count and was breaking
+words in half.
 
-`split_documents` below is deliberately plain. It cuts every document into
-fixed-size pieces with a fixed overlap and pays no attention to where sentences
-or paragraphs end. It works, and it is not good.
+Two functions live here, and both are used:
 
-On a corpus of short posts it may not cut anything at all: `campus_life` comes
-out as 88 documents and 88 chunks, because almost nothing in it reaches 800
-characters. That is the baseline, not a bug — Milestone 3 is where you decide
-whether one post should stay one chunk.
+  • `split_documents` is the strategy the pipeline actually runs. See its
+    docstring for why headings, and why the title prefix is load-bearing.
+  • `fallback_split` is the starter's original fixed-size windowing. It is kept
+    for two reasons: `split_documents` calls it on any section longer than
+    CHUNK_SIZE, and unit 2 needs something to compare the new strategy against.
 
-Your job in Milestone 3 is to replace the *body* of `split_documents` with a
-strategy that fits the documents you actually read in Milestone 1. Keep the
-name and the shape of what it returns — the rest of the pipeline calls it, and
-your README has to name the function that produced your chunks.
-
-If you get stuck for 30 minutes, `fallback_split` is the original. Switch back
-to it, write down what you saw, and move on. That's a real observation about
-your pipeline, not giving up.
+On `city_guides` the difference is 51 chunks with mid-word breaks before, and
+94 clean ones after. On a corpus of short posts like `campus_life` the section
+split would find no `##` headings at all and return one chunk per document,
+which is the correct behaviour there rather than a failure.
 """
 
 import re

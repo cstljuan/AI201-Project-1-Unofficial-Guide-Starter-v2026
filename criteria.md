@@ -61,13 +61,17 @@ in at least 4 of 5 tries.
 **Why this target:** The five out-of-corpus questions are about diesel
 engines, ibuprofen, Rust, the 1994 World Cup and the capital of Mongolia — a
 corpus of regional travel guides shares no vocabulary with any of them, so I
-expect their distances to sit clearly above my in-corpus questions. I set 4 of
-5 rather than 5 of 5 because the cutoff is a single number separating two
-groups I have not measured yet, and one borderline case would not mean the gate
-is broken.
+expected their distances to sit clearly above my in-corpus questions. I set 4
+of 5 rather than 5 of 5 because the cutoff is a single number separating two
+groups I had not measured when I wrote this, and one borderline case would not
+mean the gate is broken.
 
-<!-- TODO (Milestone 4): replace the expectation above with the ten distances I
-     actually measured, and say whether the two groups had a clean gap. -->
+Measured in Milestone 4: the gap is clean and wide. My five in-corpus questions
+ran 0.169 to 0.406; the five out-of-corpus ones ran 0.808 to 0.982. Nothing
+lands in between, so the two groups are separated by 0.402 with no overlap at
+all. On these ten questions the gate refuses 5 of 5 rather than the 4 I
+targeted — the margin turned out to be much larger than I expected, because
+travel guides and diesel engines share no vocabulary whatsoever.
 
 ---
 

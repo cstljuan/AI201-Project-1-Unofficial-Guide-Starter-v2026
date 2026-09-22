@@ -24,11 +24,18 @@ CORPUS = os.getenv("AI201_CORPUS", "city_guides")
 
 
 # ─── Chunking (Milestone 3) ──────────────────────────────────────────────────
-# These are deliberately plain, generic numbers. Milestone 3 is where you
-# replace them with numbers that fit the documents you actually read.
+# Since Milestone 3, chunk boundaries come from the `##` section headings in
+# each guide rather than from a character count — see chunker.py. Neither
+# number below is used on the normal path, and no chunk in city_guides has any
+# overlap at all.
+#
+# They survive as the safety net for a section longer than CHUNK_SIZE, which
+# chunker.py falls back to fixed-size windows for. Nothing in this corpus
+# reaches it: the longest section is 709 characters. They would matter again on
+# a corpus whose sections run long.
 
-CHUNK_SIZE = 800        # characters per chunk
-CHUNK_OVERLAP = 120     # characters shared between neighbouring chunks
+CHUNK_SIZE = 800        # ceiling before a single section gets windowed
+CHUNK_OVERLAP = 120     # overlap used only by that fallback, never otherwise
 
 
 # ─── Retrieval (Milestone 4) ─────────────────────────────────────────────────
