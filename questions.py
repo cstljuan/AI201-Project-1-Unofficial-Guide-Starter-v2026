@@ -23,11 +23,20 @@ names a target of "4 of 5", and four of three is not a thing.
 
 QUESTIONS = [
     # {"question": "...", "expects": "..."},
-    {"question": "", "expects": ""},
-    {"question": "", "expects": ""},
-    {"question": "", "expects": ""},
-    {"question": "", "expects": ""},
-    {"question": "", "expects": ""},
+    {"question": "How much does it cost to climb the church tower in Kestrelford?",
+     "expects": "£2"},
+    {"question": "When did the railway line north of Brightwater close?",
+     "expects": "1963"},
+    {"question": "What times does the pub at Elder Ness serve food?",
+     "expects": "6 to 8"},
+    {"question": "How often does the road to Elder Ness flood?",
+     "expects": "six"},
+    # Deliberately hard: the answer needs guide_kestrelford.md (pubs serve
+    # 6 to 8:30, nothing outside those windows) AND guide_eating.md (Sunday
+    # evening is hardest to find anywhere except Marchwood and Thornby Wells).
+    # Neither file answers it alone. This is the one I expect to miss.
+    {"question": "Where can I eat in Kestrelford on a Sunday evening?",
+     "expects": "Thornby Wells"},
 ]
 
 # Questions from a different world entirely. Your gate should refuse all five.
