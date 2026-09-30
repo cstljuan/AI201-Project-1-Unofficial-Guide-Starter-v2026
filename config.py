@@ -40,7 +40,7 @@ CHUNK_OVERLAP = 120     # overlap used only by that fallback, never otherwise
 
 # ─── Retrieval (Milestone 4) ─────────────────────────────────────────────────
 
-TOP_K = 5               # how many chunks to pull back per question
+TOP_K = 3               # Unit 2 stretch: retain facts with less retrieved context
 
 # The relevance gate. If the best chunk is further away than this, the system
 # refuses to answer instead of handing the model thin material.

@@ -377,6 +377,101 @@ All 15 complete answers and retrieved chunks: [primary after report](results/run
 
 The next comparison will execute the previously declared stretch change, top-k 5 to 3, with this prompt held fixed.
 
+### Stretch implementation and Run Log - After Stretch
+
+The stretch was declared in commit `338bc0a` before either improvement began. Its only system change relative to primary `after` is `config.py::TOP_K = 3` instead of 5. The improved grounding prompt is held fixed. The corpus, models, threshold, chunker, and existing index are unchanged; the third evaluation still runs the same five questions three times, plus the five deterministic gate questions once.
+
+| Criterion | Original target | Run 1 | Run 2 | Run 3 | Verdict |
+|---|---|---|---|---|---|
+| 1. Retrieved chunks contain the answer | At least 4 of 5 | 5/5 | 5/5 | 5/5 | MET |
+| 2. Every answer names a source | Every in-scope answer, 5 of 5 | 5/5 | 5/5 | 5/5 | MET |
+| 3. Gate stops out-of-corpus questions | At least 4 of 5 | 5/5 | 5/5 | 5/5 | MET |
+| 4. Chunk word boundaries and section starts | No mid-word boundaries; at least 4 of 5 section starts | 0 violations; 4/5 | 0 violations; 4/5 | 0 violations; 4/5 | MET |
+| 5. Sources named contain the fact | At least 4 of 5 questions | 5/5 | 5/5 | 5/5 | MET |
+
+The verdicts follow the same rule as before: the requested facts are retrieved in all runs, all answers cite a source, the named source contains the requested fact, the gate refuses 5/5, and the unchanged chunk audit passes. Criterion 5 is document-level provenance of the requested fact; it does not establish that every added clause is true. The pub answer still cites `guide_elder_ness.md`, which contains both requested service windows. The contradictory Monday clause below is a real failure that these original targets fail to capture. This scoring limitation applies consistently to all three phases, rather than redefining a target after seeing a regression.
+
+Criteria 3 and 4 are measured once and repeated. Manual labels for all five questions are PASS/PASS/PASS on retrieval, source naming, and requested-fact attribution. The retained supporting chunk labels match the baseline support table.
+
+#### Actual stretch outputs
+
+**Criterion 1:** `store.py::search`, `chunker.py::split_documents`, Q3 run 1, `guide_elder_ness.md#3`:
+
+```text
+Elder Ness — Eat and drink
+
+One pub, serving food 12 to 2 and 6 to 8, closed Mondays. A shop that sells basics and closes at 5pm and all day Sunday. That is the complete list. Visitors staying more than a night bring food with them.
+```
+
+**Criterion 2:** `generate.py::answer_from_chunks`, Q1 run 1:
+
+```text
+It costs £2 to climb the church tower in Kestrelford (from guide_kestrelford.md).
+```
+
+**Criterion 3:** `run_eval.py::check_out_of_scope` / `gate.py::check`, Mongolia question, best distance 0.8083643325580883, refused:
+
+```text
+I don't have enough information about that.
+```
+
+**Criterion 4:** `chunker.py::split_documents`, `tools/audit_chunks.py::audit`, guide_corry_vale.md#5:
+
+```text
+Corry Vale — Where to stay
+
+Perhaps thirty beds in the entire valley, spread across two pubs and a handful of farmhouse rooms. In summer these are booked months ahead. Camping is permitted on two marked fields and nowhere else.
+```
+
+**Criterion 5:** `generate.py::answer_from_chunks`, Q5 run 1:
+
+```text
+According to `guide_eating.md`, Sunday evening is the hardest meal to find anywhere except Marchwood and Thornby Wells, and Kestrelford's pubs serve food only between 12 and 2 and between 6 and 8:30 (with that day's specific availability otherwise unconfirmed), outside of which there is nowhere to eat at all.
+```
+
+Matching factual source chunk from `store.py::search`, `guide_eating.md#1`:
+
+```text
+Eating across the region — Opening hours
+
+This catches visitors out more than anything else. Outside Marchwood, kitchens
+across the region stop serving at 9pm and often earlier. Kestrelford's pubs
+serve 12 to 2 and 6 to 8:30 and there is nowhere to eat at all outside those
+windows. Elder Ness has one pub, closed Mondays.
+
+Sunday evening is the hardest meal to find anywhere except Marchwood and
+Thornby Wells.
+```
+
+**Observed regression, Q3 run 1**, `generate.py::answer_from_chunks`:
+
+```text
+The pub at Elder Ness serves food from 12 to 2 and 6 to 8, but its availability on Mondays is unconfirmed because it is closed on Mondays (guide_elder_ness.md).
+```
+
+Full stretch evidence: [report](results/run_2026-09-30_164030_after_stretch.md), [JSON](results/evidence_2026-09-30_164005_after_stretch.json), and [chunk audit](results/chunks-after-stretch.json). It made 15 real model calls, zero cache hits.
+
+**Did the stretch help?** It helped context cost but made the pub answer worse. Prompt tokens fell **9,078 to 6,501**, a reduction of **2,577 (28.4%)**, with the prompt instruction held fixed. Retrieved context fell from five to three chunks per question (75 to 45 chunks across the 15 calls). The five original criterion scores stayed unchanged, and Q5 still explicitly flags Sunday uncertainty in **3/3** runs. However, contradictory Monday-uncertainty language appears in **3/3** Q3 answers, versus **0/3** in baseline and **0/3** in the primary after run. This narrower regression check was discovered after the stretch, so it is exploratory, not a precommitted criterion.
+
+**Regression diagnosis, generation stage and mechanism:** all three stretch Q3 runs retrieve `guide_elder_ness.md#3`, whose full text explicitly says "closed Mondays". Thus the answer is present in the context and the gate passes at best distance 0.168684; loading, chunking, and retrieval do not explain the Monday contradiction. Generation applies uncertainty language to an explicit closure, even though the question does not name Monday. A plausible mechanism is overgeneralization of the new day-specific instruction under the shorter context. The changed context and these three outputs support an association; they do not prove why the model applied the rule incorrectly. The prompt requires confirmation of service but does not explicitly distinguish confirmed non-service from unknown availability. That is a hypothesis for a future isolated prompt experiment, not a confirmed cause.
+
+### Measured comparison
+
+| Measure | Before | Primary after | Stretch after |
+|---|---|---|---|
+| Criterion 1, runs 1/2/3 | 5/5, 5/5, 5/5 | 5/5, 5/5, 5/5 | 5/5, 5/5, 5/5 |
+| Criterion 2, runs 1/2/3 | 5/5, 5/5, 5/5 | 5/5, 5/5, 5/5 | 5/5, 5/5, 5/5 |
+| Criterion 3, deterministic refusals | 5/5 | 5/5 | 5/5 |
+| Criterion 4, deterministic audit | 0 word splits; 4/5 section starts | 0 word splits; 4/5 section starts | 0 word splits; 4/5 section starts |
+| Criterion 5, runs 1/2/3 | 5/5, 5/5, 5/5 | 5/5, 5/5, 5/5 | 5/5, 5/5, 5/5 |
+| Q5 explicitly says Sunday unconfirmed (exploratory) | 0/3 | 3/3 | 3/3 |
+| Q3 contradicts Monday closure (exploratory) | 0/3 | 0/3 | 3/3 |
+| Prompt tokens, reported by service | 8,358 | 9,078 | 6,501 |
+| Output tokens, reported by service | 714 | 709 | 687 |
+| Model calls / cache hits | 15 / 0 | 15 / 0 | 15 / 0 |
+
+The final measured system retains both sequential changes: the day-specific grounding rule and top-k 3. This records the unsuccessful quality aspect of the stretch transparently; no third fix or silent rollback is bundled into the reported comparison.
+
 ## What's Still Broken
 
 Pending the measured comparisons.

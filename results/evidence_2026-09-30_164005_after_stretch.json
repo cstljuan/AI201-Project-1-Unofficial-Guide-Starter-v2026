@@ -1,0 +1,710 @@
+{
+  "label": "after_stretch",
+  "corpus": "city_guides",
+  "variant": "default",
+  "model": "gemini-3.5-flash-lite",
+  "embedding_model": "all-MiniLM-L6-v2",
+  "top_k": 3,
+  "threshold": 0.6,
+  "cache": false,
+  "started": "2026-09-30T16:40:05.740604",
+  "transcript": [
+    {
+      "question": "How much does it cost to climb the church tower in Kestrelford?",
+      "run": 1,
+      "answer": "It costs £2 to climb the church tower in Kestrelford (from guide_kestrelford.md).",
+      "sources": [
+        "guide_kestrelford.md"
+      ],
+      "best_distance": 0.4059350932164584,
+      "gate_passed": true,
+      "chunks": [
+        {
+          "text": "Kestrelford — What to see\n\nThe market square on a Saturday morning is the main event and has run continuously since the 1400s. The parish church has a 13th-century tower you can climb for £2. The old trackbed walk runs six miles to the next village along an easy gradient and is the best half-day here.",
+          "source": "guide_kestrelford.md",
+          "label": "guide_kestrelford.md#4",
+          "distance": 0.4059350932164584,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Kestrelford\n\nKestrelford is a hill town of 12,000, an hour inland from Brightwater. It has been a market town since the 1200s and the street plan has not meaningfully changed since. This is charming on foot and difficult in a car.",
+          "source": "guide_kestrelford.md",
+          "label": "guide_kestrelford.md#0",
+          "distance": 0.5110727946251405,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Kestrelford — Getting around\n\nEverything is within a ten-minute walk of the market square. The town is built on a slope and the walk up from the lower car park is steeper than it looks on a map. There is no local bus service within the town itself.",
+          "source": "guide_kestrelford.md",
+          "label": "guide_kestrelford.md#2",
+          "distance": 0.532155280206483,
+          "produced_by": "chunker.py::split_documents"
+        }
+      ],
+      "model_calls": 1,
+      "cache": false
+    },
+    {
+      "question": "How much does it cost to climb the church tower in Kestrelford?",
+      "run": 2,
+      "answer": "It costs £2 to climb the church tower in Kestrelford (Source: guide_kestrelford.md).",
+      "sources": [
+        "guide_kestrelford.md"
+      ],
+      "best_distance": 0.4059350932164584,
+      "gate_passed": true,
+      "chunks": [
+        {
+          "text": "Kestrelford — What to see\n\nThe market square on a Saturday morning is the main event and has run continuously since the 1400s. The parish church has a 13th-century tower you can climb for £2. The old trackbed walk runs six miles to the next village along an easy gradient and is the best half-day here.",
+          "source": "guide_kestrelford.md",
+          "label": "guide_kestrelford.md#4",
+          "distance": 0.4059350932164584,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Kestrelford\n\nKestrelford is a hill town of 12,000, an hour inland from Brightwater. It has been a market town since the 1200s and the street plan has not meaningfully changed since. This is charming on foot and difficult in a car.",
+          "source": "guide_kestrelford.md",
+          "label": "guide_kestrelford.md#0",
+          "distance": 0.5110727946251405,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Kestrelford — Getting around\n\nEverything is within a ten-minute walk of the market square. The town is built on a slope and the walk up from the lower car park is steeper than it looks on a map. There is no local bus service within the town itself.",
+          "source": "guide_kestrelford.md",
+          "label": "guide_kestrelford.md#2",
+          "distance": 0.532155280206483,
+          "produced_by": "chunker.py::split_documents"
+        }
+      ],
+      "model_calls": 1,
+      "cache": false
+    },
+    {
+      "question": "How much does it cost to climb the church tower in Kestrelford?",
+      "run": 3,
+      "answer": "It costs £2 to climb the church tower in Kestrelford (guide_kestrelford.md).",
+      "sources": [
+        "guide_kestrelford.md"
+      ],
+      "best_distance": 0.4059350932164584,
+      "gate_passed": true,
+      "chunks": [
+        {
+          "text": "Kestrelford — What to see\n\nThe market square on a Saturday morning is the main event and has run continuously since the 1400s. The parish church has a 13th-century tower you can climb for £2. The old trackbed walk runs six miles to the next village along an easy gradient and is the best half-day here.",
+          "source": "guide_kestrelford.md",
+          "label": "guide_kestrelford.md#4",
+          "distance": 0.4059350932164584,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Kestrelford\n\nKestrelford is a hill town of 12,000, an hour inland from Brightwater. It has been a market town since the 1200s and the street plan has not meaningfully changed since. This is charming on foot and difficult in a car.",
+          "source": "guide_kestrelford.md",
+          "label": "guide_kestrelford.md#0",
+          "distance": 0.5110727946251405,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Kestrelford — Getting around\n\nEverything is within a ten-minute walk of the market square. The town is built on a slope and the walk up from the lower car park is steeper than it looks on a map. There is no local bus service within the town itself.",
+          "source": "guide_kestrelford.md",
+          "label": "guide_kestrelford.md#2",
+          "distance": 0.532155280206483,
+          "produced_by": "chunker.py::split_documents"
+        }
+      ],
+      "model_calls": 1,
+      "cache": false
+    },
+    {
+      "question": "When did the railway line north of Brightwater close?",
+      "run": 1,
+      "answer": "The railway line north of Brightwater closed in 1963. This is mentioned in `guide_regional_transport.md` and `guide_walking.md`.",
+      "sources": [
+        "guide_kestrelford.md",
+        "guide_regional_transport.md",
+        "guide_walking.md"
+      ],
+      "best_distance": 0.25775507549829646,
+      "gate_passed": true,
+      "chunks": [
+        {
+          "text": "Getting around the region — The railway\n\nThe line runs along the river valley, connecting Brightwater to the regional\nhub in 50 minutes. Eleven services a day on weekdays, six on Sundays. The line\nnorth of Brightwater closed in 1963 and everything beyond it is bus or car.\n\nTickets are cheaper booked the day before than on the day, and considerably\ncheaper than that booked a week ahead. There is no ticket office at\nBrightwater station outside weekday mornings; the machine on the platform takes\ncards only.",
+          "source": "guide_regional_transport.md",
+          "label": "guide_regional_transport.md#0",
+          "distance": 0.25775507549829646,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Walking in the region — Easy, on good surfaces\n\nThe **Brightwater river path** runs four miles upstream from the town to a weir,\non a made surface, flat throughout. It is the most-walked route in the region\nand deservedly so. Continuing downstream from Givens Mill reaches Brightwater in\nabout three hours.\n\nThe **Kestrelford trackbed** follows the railway line closed in 1963 for six\nmiles to the next village. Easy gradient, good surface, and the best walking in\nthe region for the effort involved.\n\n**Thornby Wells** has flat, formal gardens and level streets — the region's\nmost accessible town on foot.",
+          "source": "guide_walking.md",
+          "label": "guide_walking.md#0",
+          "distance": 0.3478901055617476,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Kestrelford — Getting there\n\nNo railway station; the line was closed in 1963 and the trackbed is now a walking route. Buses run from Brightwater roughly hourly on weekdays, every two hours on Saturdays, and not at all on Sundays. Driving takes 55 minutes and the last eight are on a single-track road with passing places.",
+          "source": "guide_kestrelford.md",
+          "label": "guide_kestrelford.md#1",
+          "distance": 0.3894772944983471,
+          "produced_by": "chunker.py::split_documents"
+        }
+      ],
+      "model_calls": 1,
+      "cache": false
+    },
+    {
+      "question": "When did the railway line north of Brightwater close?",
+      "run": 2,
+      "answer": "The railway line north of Brightwater closed in 1963. \n\nSources: `guide_regional_transport.md` and `guide_walking.md`",
+      "sources": [
+        "guide_kestrelford.md",
+        "guide_regional_transport.md",
+        "guide_walking.md"
+      ],
+      "best_distance": 0.25775507549829646,
+      "gate_passed": true,
+      "chunks": [
+        {
+          "text": "Getting around the region — The railway\n\nThe line runs along the river valley, connecting Brightwater to the regional\nhub in 50 minutes. Eleven services a day on weekdays, six on Sundays. The line\nnorth of Brightwater closed in 1963 and everything beyond it is bus or car.\n\nTickets are cheaper booked the day before than on the day, and considerably\ncheaper than that booked a week ahead. There is no ticket office at\nBrightwater station outside weekday mornings; the machine on the platform takes\ncards only.",
+          "source": "guide_regional_transport.md",
+          "label": "guide_regional_transport.md#0",
+          "distance": 0.25775507549829646,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Walking in the region — Easy, on good surfaces\n\nThe **Brightwater river path** runs four miles upstream from the town to a weir,\non a made surface, flat throughout. It is the most-walked route in the region\nand deservedly so. Continuing downstream from Givens Mill reaches Brightwater in\nabout three hours.\n\nThe **Kestrelford trackbed** follows the railway line closed in 1963 for six\nmiles to the next village. Easy gradient, good surface, and the best walking in\nthe region for the effort involved.\n\n**Thornby Wells** has flat, formal gardens and level streets — the region's\nmost accessible town on foot.",
+          "source": "guide_walking.md",
+          "label": "guide_walking.md#0",
+          "distance": 0.3478901055617476,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Kestrelford — Getting there\n\nNo railway station; the line was closed in 1963 and the trackbed is now a walking route. Buses run from Brightwater roughly hourly on weekdays, every two hours on Saturdays, and not at all on Sundays. Driving takes 55 minutes and the last eight are on a single-track road with passing places.",
+          "source": "guide_kestrelford.md",
+          "label": "guide_kestrelford.md#1",
+          "distance": 0.3894772944983471,
+          "produced_by": "chunker.py::split_documents"
+        }
+      ],
+      "model_calls": 1,
+      "cache": false
+    },
+    {
+      "question": "When did the railway line north of Brightwater close?",
+      "run": 3,
+      "answer": "The railway line north of Brightwater closed in 1963. \n\nSources: `guide_regional_transport.md` and `guide_walking.md`",
+      "sources": [
+        "guide_kestrelford.md",
+        "guide_regional_transport.md",
+        "guide_walking.md"
+      ],
+      "best_distance": 0.25775507549829646,
+      "gate_passed": true,
+      "chunks": [
+        {
+          "text": "Getting around the region — The railway\n\nThe line runs along the river valley, connecting Brightwater to the regional\nhub in 50 minutes. Eleven services a day on weekdays, six on Sundays. The line\nnorth of Brightwater closed in 1963 and everything beyond it is bus or car.\n\nTickets are cheaper booked the day before than on the day, and considerably\ncheaper than that booked a week ahead. There is no ticket office at\nBrightwater station outside weekday mornings; the machine on the platform takes\ncards only.",
+          "source": "guide_regional_transport.md",
+          "label": "guide_regional_transport.md#0",
+          "distance": 0.25775507549829646,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Walking in the region — Easy, on good surfaces\n\nThe **Brightwater river path** runs four miles upstream from the town to a weir,\non a made surface, flat throughout. It is the most-walked route in the region\nand deservedly so. Continuing downstream from Givens Mill reaches Brightwater in\nabout three hours.\n\nThe **Kestrelford trackbed** follows the railway line closed in 1963 for six\nmiles to the next village. Easy gradient, good surface, and the best walking in\nthe region for the effort involved.\n\n**Thornby Wells** has flat, formal gardens and level streets — the region's\nmost accessible town on foot.",
+          "source": "guide_walking.md",
+          "label": "guide_walking.md#0",
+          "distance": 0.3478901055617476,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Kestrelford — Getting there\n\nNo railway station; the line was closed in 1963 and the trackbed is now a walking route. Buses run from Brightwater roughly hourly on weekdays, every two hours on Saturdays, and not at all on Sundays. Driving takes 55 minutes and the last eight are on a single-track road with passing places.",
+          "source": "guide_kestrelford.md",
+          "label": "guide_kestrelford.md#1",
+          "distance": 0.3894772944983471,
+          "produced_by": "chunker.py::split_documents"
+        }
+      ],
+      "model_calls": 1,
+      "cache": false
+    },
+    {
+      "question": "What times does the pub at Elder Ness serve food?",
+      "run": 1,
+      "answer": "The pub at Elder Ness serves food from 12 to 2 and 6 to 8, but its availability on Mondays is unconfirmed because it is closed on Mondays (guide_elder_ness.md).",
+      "sources": [
+        "guide_eating.md",
+        "guide_elder_ness.md"
+      ],
+      "best_distance": 0.16868423763735574,
+      "gate_passed": true,
+      "chunks": [
+        {
+          "text": "Elder Ness — Eat and drink\n\nOne pub, serving food 12 to 2 and 6 to 8, closed Mondays. A shop that sells basics and closes at 5pm and all day Sunday. That is the complete list. Visitors staying more than a night bring food with them.",
+          "source": "guide_elder_ness.md",
+          "label": "guide_elder_ness.md#3",
+          "distance": 0.16868423763735574,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Eating across the region — Opening hours\n\nThis catches visitors out more than anything else. Outside Marchwood, kitchens\nacross the region stop serving at 9pm and often earlier. Kestrelford's pubs\nserve 12 to 2 and 6 to 8:30 and there is nowhere to eat at all outside those\nwindows. Elder Ness has one pub, closed Mondays.\n\nSunday evening is the hardest meal to find anywhere except Marchwood and\nThornby Wells.",
+          "source": "guide_eating.md",
+          "label": "guide_eating.md#1",
+          "distance": 0.31266813127829907,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Elder Ness — Where to stay\n\nThe pub has four rooms and the observatory has dormitory accommodation for members and their guests. Both book up entirely for the migration seasons a year ahead. There is nothing else.",
+          "source": "guide_elder_ness.md",
+          "label": "guide_elder_ness.md#5",
+          "distance": 0.3415484155648212,
+          "produced_by": "chunker.py::split_documents"
+        }
+      ],
+      "model_calls": 1,
+      "cache": false
+    },
+    {
+      "question": "What times does the pub at Elder Ness serve food?",
+      "run": 2,
+      "answer": "The pub at Elder Ness serves food from 12 to 2 and 6 to 8, but it is closed on Mondays (guide_elder_ness.md). Therefore, availability on Mondays is unconfirmed by general hours alone.",
+      "sources": [
+        "guide_eating.md",
+        "guide_elder_ness.md"
+      ],
+      "best_distance": 0.16868423763735574,
+      "gate_passed": true,
+      "chunks": [
+        {
+          "text": "Elder Ness — Eat and drink\n\nOne pub, serving food 12 to 2 and 6 to 8, closed Mondays. A shop that sells basics and closes at 5pm and all day Sunday. That is the complete list. Visitors staying more than a night bring food with them.",
+          "source": "guide_elder_ness.md",
+          "label": "guide_elder_ness.md#3",
+          "distance": 0.16868423763735574,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Eating across the region — Opening hours\n\nThis catches visitors out more than anything else. Outside Marchwood, kitchens\nacross the region stop serving at 9pm and often earlier. Kestrelford's pubs\nserve 12 to 2 and 6 to 8:30 and there is nowhere to eat at all outside those\nwindows. Elder Ness has one pub, closed Mondays.\n\nSunday evening is the hardest meal to find anywhere except Marchwood and\nThornby Wells.",
+          "source": "guide_eating.md",
+          "label": "guide_eating.md#1",
+          "distance": 0.31266813127829907,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Elder Ness — Where to stay\n\nThe pub has four rooms and the observatory has dormitory accommodation for members and their guests. Both book up entirely for the migration seasons a year ahead. There is nothing else.",
+          "source": "guide_elder_ness.md",
+          "label": "guide_elder_ness.md#5",
+          "distance": 0.3415484155648212,
+          "produced_by": "chunker.py::split_documents"
+        }
+      ],
+      "model_calls": 1,
+      "cache": false
+    },
+    {
+      "question": "What times does the pub at Elder Ness serve food?",
+      "run": 3,
+      "answer": "The pub at Elder Ness serves food from 12 to 2 and 6 to 8, but its availability on Mondays is unconfirmed because the documents state it is closed on Mondays (guide_elder_ness.md and guide_eating.md).",
+      "sources": [
+        "guide_eating.md",
+        "guide_elder_ness.md"
+      ],
+      "best_distance": 0.16868423763735574,
+      "gate_passed": true,
+      "chunks": [
+        {
+          "text": "Elder Ness — Eat and drink\n\nOne pub, serving food 12 to 2 and 6 to 8, closed Mondays. A shop that sells basics and closes at 5pm and all day Sunday. That is the complete list. Visitors staying more than a night bring food with them.",
+          "source": "guide_elder_ness.md",
+          "label": "guide_elder_ness.md#3",
+          "distance": 0.16868423763735574,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Eating across the region — Opening hours\n\nThis catches visitors out more than anything else. Outside Marchwood, kitchens\nacross the region stop serving at 9pm and often earlier. Kestrelford's pubs\nserve 12 to 2 and 6 to 8:30 and there is nowhere to eat at all outside those\nwindows. Elder Ness has one pub, closed Mondays.\n\nSunday evening is the hardest meal to find anywhere except Marchwood and\nThornby Wells.",
+          "source": "guide_eating.md",
+          "label": "guide_eating.md#1",
+          "distance": 0.31266813127829907,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Elder Ness — Where to stay\n\nThe pub has four rooms and the observatory has dormitory accommodation for members and their guests. Both book up entirely for the migration seasons a year ahead. There is nothing else.",
+          "source": "guide_elder_ness.md",
+          "label": "guide_elder_ness.md#5",
+          "distance": 0.3415484155648212,
+          "produced_by": "chunker.py::split_documents"
+        }
+      ],
+      "model_calls": 1,
+      "cache": false
+    },
+    {
+      "question": "How often does the road to Elder Ness flood?",
+      "run": 1,
+      "answer": "The single road into Elder Ness floods at the highest spring tides roughly six times a year for about two hours either side of high water (guide_elder_ness.md).",
+      "sources": [
+        "guide_elder_ness.md"
+      ],
+      "best_distance": 0.26410322996280644,
+      "gate_passed": true,
+      "chunks": [
+        {
+          "text": "Elder Ness — Getting there\n\nA single road in, which floods at the highest spring tides roughly six times a year for about two hours either side of high water. Tide tables are posted at the turning and are worth reading. No public transport of any kind. Nearest station is Pellew Sands, 40 minutes by road.",
+          "source": "guide_elder_ness.md",
+          "label": "guide_elder_ness.md#1",
+          "distance": 0.26410322996280644,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Elder Ness — When to go\n\nApril to May and September to October for birds, which is what most visitors come for. Midsummer is pleasant and quiet. Winter is severe, the road floods more often, and the pub reduces to weekends only.",
+          "source": "guide_elder_ness.md",
+          "label": "guide_elder_ness.md#6",
+          "distance": 0.3768521054102839,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Elder Ness\n\nElder Ness is a headland with a village of 300 on it, a lighthouse, a bird observatory, and very little else. People come for one of three reasons — birds, walking, or a deliberate absence of things to do.",
+          "source": "guide_elder_ness.md",
+          "label": "guide_elder_ness.md#0",
+          "distance": 0.41694322228458347,
+          "produced_by": "chunker.py::split_documents"
+        }
+      ],
+      "model_calls": 1,
+      "cache": false
+    },
+    {
+      "question": "How often does the road to Elder Ness flood?",
+      "run": 2,
+      "answer": "The single road into Elder Ness floods at the highest spring tides roughly six times a year for about two hours either side of high water (guide_elder_ness.md).",
+      "sources": [
+        "guide_elder_ness.md"
+      ],
+      "best_distance": 0.26410322996280644,
+      "gate_passed": true,
+      "chunks": [
+        {
+          "text": "Elder Ness — Getting there\n\nA single road in, which floods at the highest spring tides roughly six times a year for about two hours either side of high water. Tide tables are posted at the turning and are worth reading. No public transport of any kind. Nearest station is Pellew Sands, 40 minutes by road.",
+          "source": "guide_elder_ness.md",
+          "label": "guide_elder_ness.md#1",
+          "distance": 0.26410322996280644,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Elder Ness — When to go\n\nApril to May and September to October for birds, which is what most visitors come for. Midsummer is pleasant and quiet. Winter is severe, the road floods more often, and the pub reduces to weekends only.",
+          "source": "guide_elder_ness.md",
+          "label": "guide_elder_ness.md#6",
+          "distance": 0.3768521054102839,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Elder Ness\n\nElder Ness is a headland with a village of 300 on it, a lighthouse, a bird observatory, and very little else. People come for one of three reasons — birds, walking, or a deliberate absence of things to do.",
+          "source": "guide_elder_ness.md",
+          "label": "guide_elder_ness.md#0",
+          "distance": 0.41694322228458347,
+          "produced_by": "chunker.py::split_documents"
+        }
+      ],
+      "model_calls": 1,
+      "cache": false
+    },
+    {
+      "question": "How often does the road to Elder Ness flood?",
+      "run": 3,
+      "answer": "The single road into Elder Ness floods at the highest spring tides roughly six times a year for about two hours either side of high water. \n\nSource: guide_elder_ness.md",
+      "sources": [
+        "guide_elder_ness.md"
+      ],
+      "best_distance": 0.26410322996280644,
+      "gate_passed": true,
+      "chunks": [
+        {
+          "text": "Elder Ness — Getting there\n\nA single road in, which floods at the highest spring tides roughly six times a year for about two hours either side of high water. Tide tables are posted at the turning and are worth reading. No public transport of any kind. Nearest station is Pellew Sands, 40 minutes by road.",
+          "source": "guide_elder_ness.md",
+          "label": "guide_elder_ness.md#1",
+          "distance": 0.26410322996280644,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Elder Ness — When to go\n\nApril to May and September to October for birds, which is what most visitors come for. Midsummer is pleasant and quiet. Winter is severe, the road floods more often, and the pub reduces to weekends only.",
+          "source": "guide_elder_ness.md",
+          "label": "guide_elder_ness.md#6",
+          "distance": 0.3768521054102839,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Elder Ness\n\nElder Ness is a headland with a village of 300 on it, a lighthouse, a bird observatory, and very little else. People come for one of three reasons — birds, walking, or a deliberate absence of things to do.",
+          "source": "guide_elder_ness.md",
+          "label": "guide_elder_ness.md#0",
+          "distance": 0.41694322228458347,
+          "produced_by": "chunker.py::split_documents"
+        }
+      ],
+      "model_calls": 1,
+      "cache": false
+    },
+    {
+      "question": "Where can I eat in Kestrelford on a Sunday evening?",
+      "run": 1,
+      "answer": "According to `guide_eating.md`, Sunday evening is the hardest meal to find anywhere except Marchwood and Thornby Wells, and Kestrelford's pubs serve food only between 12 and 2 and between 6 and 8:30 (with that day's specific availability otherwise unconfirmed), outside of which there is nowhere to eat at all.",
+      "sources": [
+        "guide_eating.md",
+        "guide_kestrelford.md"
+      ],
+      "best_distance": 0.2678240814023254,
+      "gate_passed": true,
+      "chunks": [
+        {
+          "text": "Kestrelford — Eat and drink\n\nFour pubs, two cafés, and a bakery that sells out by 11am. The pubs serve food between 12 and 2 and again between 6 and 8:30, and outside those windows there is nowhere to eat at all. The bakery is the reason most people come back.",
+          "source": "guide_kestrelford.md",
+          "label": "guide_kestrelford.md#3",
+          "distance": 0.2678240814023254,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Eating across the region — Opening hours\n\nThis catches visitors out more than anything else. Outside Marchwood, kitchens\nacross the region stop serving at 9pm and often earlier. Kestrelford's pubs\nserve 12 to 2 and 6 to 8:30 and there is nowhere to eat at all outside those\nwindows. Elder Ness has one pub, closed Mondays.\n\nSunday evening is the hardest meal to find anywhere except Marchwood and\nThornby Wells.",
+          "source": "guide_eating.md",
+          "label": "guide_eating.md#1",
+          "distance": 0.32677061463531776,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Kestrelford — Where to stay\n\nTwo inns on the square and a handful of rooms above the pubs. Booking ahead matters between May and September and not at all otherwise. There is no accommodation of any kind within four miles of the town in either direction.",
+          "source": "guide_kestrelford.md",
+          "label": "guide_kestrelford.md#5",
+          "distance": 0.36522266741112297,
+          "produced_by": "chunker.py::split_documents"
+        }
+      ],
+      "model_calls": 1,
+      "cache": false
+    },
+    {
+      "question": "Where can I eat in Kestrelford on a Sunday evening?",
+      "run": 2,
+      "answer": "Based on the provided documents, Kestrelford's pubs serve food between 12 and 2 and again between 6 and 8:30 (guide_kestrelford.md and guide_eating.md). However, the documents state that Sunday evening is the hardest meal to find anywhere except Marchwood and Thornby Wells (guide_eating.md), and general opening hours do not confirm service on a particular day, leaving Sunday availability unconfirmed.",
+      "sources": [
+        "guide_eating.md",
+        "guide_kestrelford.md"
+      ],
+      "best_distance": 0.2678240814023254,
+      "gate_passed": true,
+      "chunks": [
+        {
+          "text": "Kestrelford — Eat and drink\n\nFour pubs, two cafés, and a bakery that sells out by 11am. The pubs serve food between 12 and 2 and again between 6 and 8:30, and outside those windows there is nowhere to eat at all. The bakery is the reason most people come back.",
+          "source": "guide_kestrelford.md",
+          "label": "guide_kestrelford.md#3",
+          "distance": 0.2678240814023254,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Eating across the region — Opening hours\n\nThis catches visitors out more than anything else. Outside Marchwood, kitchens\nacross the region stop serving at 9pm and often earlier. Kestrelford's pubs\nserve 12 to 2 and 6 to 8:30 and there is nowhere to eat at all outside those\nwindows. Elder Ness has one pub, closed Mondays.\n\nSunday evening is the hardest meal to find anywhere except Marchwood and\nThornby Wells.",
+          "source": "guide_eating.md",
+          "label": "guide_eating.md#1",
+          "distance": 0.32677061463531776,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Kestrelford — Where to stay\n\nTwo inns on the square and a handful of rooms above the pubs. Booking ahead matters between May and September and not at all otherwise. There is no accommodation of any kind within four miles of the town in either direction.",
+          "source": "guide_kestrelford.md",
+          "label": "guide_kestrelford.md#5",
+          "distance": 0.36522266741112297,
+          "produced_by": "chunker.py::split_documents"
+        }
+      ],
+      "model_calls": 1,
+      "cache": false
+    },
+    {
+      "question": "Where can I eat in Kestrelford on a Sunday evening?",
+      "run": 3,
+      "answer": "Based on the provided documents, Kestrelford's pubs serve food between 6 and 8:30, but availability for Sunday evening is unconfirmed as general hours do not confirm service on a particular day, and Sunday evening is generally noted as the hardest meal to find outside Marchwood and Thornby Wells. \n\nSource: `guide_eating.md` and `guide_kestrelford.md`.",
+      "sources": [
+        "guide_eating.md",
+        "guide_kestrelford.md"
+      ],
+      "best_distance": 0.2678240814023254,
+      "gate_passed": true,
+      "chunks": [
+        {
+          "text": "Kestrelford — Eat and drink\n\nFour pubs, two cafés, and a bakery that sells out by 11am. The pubs serve food between 12 and 2 and again between 6 and 8:30, and outside those windows there is nowhere to eat at all. The bakery is the reason most people come back.",
+          "source": "guide_kestrelford.md",
+          "label": "guide_kestrelford.md#3",
+          "distance": 0.2678240814023254,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Eating across the region — Opening hours\n\nThis catches visitors out more than anything else. Outside Marchwood, kitchens\nacross the region stop serving at 9pm and often earlier. Kestrelford's pubs\nserve 12 to 2 and 6 to 8:30 and there is nowhere to eat at all outside those\nwindows. Elder Ness has one pub, closed Mondays.\n\nSunday evening is the hardest meal to find anywhere except Marchwood and\nThornby Wells.",
+          "source": "guide_eating.md",
+          "label": "guide_eating.md#1",
+          "distance": 0.32677061463531776,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Kestrelford — Where to stay\n\nTwo inns on the square and a handful of rooms above the pubs. Booking ahead matters between May and September and not at all otherwise. There is no accommodation of any kind within four miles of the town in either direction.",
+          "source": "guide_kestrelford.md",
+          "label": "guide_kestrelford.md#5",
+          "distance": 0.36522266741112297,
+          "produced_by": "chunker.py::split_documents"
+        }
+      ],
+      "model_calls": 1,
+      "cache": false
+    }
+  ],
+  "out_of_scope": [
+    {
+      "question": "What is the capital of Mongolia?",
+      "refused": true,
+      "best_distance": 0.8083643325580883,
+      "gate_passed": false,
+      "answer": "I don't have enough information about that.",
+      "chunks": [
+        {
+          "text": "Corry Vale\n\nCorry Vale is not a town but a valley containing four villages strung along eleven miles of road. Visitors treat it as one destination and locals emphatically do not. The largest village has 900 people and the smallest has 140.",
+          "source": "guide_corry_vale.md",
+          "label": "guide_corry_vale.md#0",
+          "distance": 0.8083643325580883,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Givens Mill\n\nGivens Mill is a village of 700 built around a working watermill that still grinds flour commercially. It is the sort of place people visit for an afternoon and then talk about for longer than the visit lasted.",
+          "source": "guide_givens_mill.md",
+          "label": "guide_givens_mill.md#0",
+          "distance": 0.8514791546380053,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Getting around the region with limited mobility\n\nAn honest assessment rather than a promotional one. Some of these places are\ndifficult and it is better to know in advance.",
+          "source": "guide_accessibility.md",
+          "label": "guide_accessibility.md#0",
+          "distance": 0.8658375155779396,
+          "produced_by": "chunker.py::split_documents"
+        }
+      ]
+    },
+    {
+      "question": "How do I change the oil in a diesel engine?",
+      "refused": true,
+      "best_distance": 0.8808848840205499,
+      "gate_passed": false,
+      "answer": "I don't have enough information about that.",
+      "chunks": [
+        {
+          "text": "Givens Mill — Getting there\n\nNo station and no bus on Sundays; four buses a day from Brightwater on weekdays, taking 30 minutes. Driving is 20 minutes. The village car park holds about forty cars and is full by 11am on summer Saturdays.",
+          "source": "guide_givens_mill.md",
+          "label": "guide_givens_mill.md#1",
+          "distance": 0.8808848840205499,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Brightwater — Getting there\n\nThe train runs to the regional hub eleven times a day on weekdays and six times on Sundays, taking 50 minutes. The station is a 15-minute walk from campus, or the shuttle meets the four busiest arrivals. Long-distance coaches stop on Verrill Street rather than at the station, which catches people out. There is no airport; the nearest is 90 minutes by road.",
+          "source": "guide_brightwater.md",
+          "label": "guide_brightwater.md#1",
+          "distance": 0.9035372116169629,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Walking in the region — Easy, on good surfaces\n\nThe **Brightwater river path** runs four miles upstream from the town to a weir,\non a made surface, flat throughout. It is the most-walked route in the region\nand deservedly so. Continuing downstream from Givens Mill reaches Brightwater in\nabout three hours.\n\nThe **Kestrelford trackbed** follows the railway line closed in 1963 for six\nmiles to the next village. Easy gradient, good surface, and the best walking in\nthe region for the effort involved.\n\n**Thornby Wells** has flat, formal gardens and level streets — the region's\nmost accessible town on foot.",
+          "source": "guide_walking.md",
+          "label": "guide_walking.md#0",
+          "distance": 0.9095398377506552,
+          "produced_by": "chunker.py::split_documents"
+        }
+      ]
+    },
+    {
+      "question": "Who won the 1994 World Cup?",
+      "refused": true,
+      "best_distance": 0.9819047772244301,
+      "gate_passed": false,
+      "answer": "I don't have enough information about that.",
+      "chunks": [
+        {
+          "text": "Givens Mill\n\nGivens Mill is a village of 700 built around a working watermill that still grinds flour commercially. It is the sort of place people visit for an afternoon and then talk about for longer than the visit lasted.",
+          "source": "guide_givens_mill.md",
+          "label": "guide_givens_mill.md#0",
+          "distance": 0.9819047772244301,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Thornby Wells — When to go\n\nYear-round, genuinely. The gardens are best in May and June. The concert season runs September to April, which makes this the region's most reliable winter destination after Marchwood.",
+          "source": "guide_thornby_wells.md",
+          "label": "guide_thornby_wells.md#6",
+          "distance": 1.0019972991243788,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Getting around the region with limited mobility\n\nAn honest assessment rather than a promotional one. Some of these places are\ndifficult and it is better to know in advance.",
+          "source": "guide_accessibility.md",
+          "label": "guide_accessibility.md#0",
+          "distance": 1.002406198067411,
+          "produced_by": "chunker.py::split_documents"
+        }
+      ]
+    },
+    {
+      "question": "What is the recommended dosage of ibuprofen for a headache?",
+      "refused": true,
+      "best_distance": 0.8351150121297349,
+      "gate_passed": false,
+      "answer": "I don't have enough information about that.",
+      "chunks": [
+        {
+          "text": "Givens Mill — Eat and drink\n\nA tearoom attached to the mill, open 10 to 4 daily except Tuesdays, which sells bread made from the flour ground twenty metres away and is the reason most people come. One pub, food served lunchtimes and Thursday to Saturday evenings.",
+          "source": "guide_givens_mill.md",
+          "label": "guide_givens_mill.md#3",
+          "distance": 0.8351150121297349,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Elder Ness — Getting there\n\nA single road in, which floods at the highest spring tides roughly six times a year for about two hours either side of high water. Tide tables are posted at the turning and are worth reading. No public transport of any kind. Nearest station is Pellew Sands, 40 minutes by road.",
+          "source": "guide_elder_ness.md",
+          "label": "guide_elder_ness.md#1",
+          "distance": 0.8453908943674345,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Elder Ness — Getting around\n\nOn foot. The village is one street. The lighthouse is a 25-minute walk along the shingle, which is harder going than the distance suggests. There is one car park at the village and parking anywhere else on the headland is prohibited and enforced.",
+          "source": "guide_elder_ness.md",
+          "label": "guide_elder_ness.md#2",
+          "distance": 0.8467661139304564,
+          "produced_by": "chunker.py::split_documents"
+        }
+      ]
+    },
+    {
+      "question": "How do I write a for loop in Rust?",
+      "refused": true,
+      "best_distance": 0.8588660708333274,
+      "gate_passed": false,
+      "answer": "I don't have enough information about that.",
+      "chunks": [
+        {
+          "text": "Givens Mill\n\nGivens Mill is a village of 700 built around a working watermill that still grinds flour commercially. It is the sort of place people visit for an afternoon and then talk about for longer than the visit lasted.",
+          "source": "guide_givens_mill.md",
+          "label": "guide_givens_mill.md#0",
+          "distance": 0.8588660708333274,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Givens Mill — Getting around\n\nEverything is on one street along the river. The mill is at one end and the church at the other, eight minutes apart. The riverside path continues in both directions for as far as you want to walk.",
+          "source": "guide_givens_mill.md",
+          "label": "guide_givens_mill.md#2",
+          "distance": 0.8672779101000482,
+          "produced_by": "chunker.py::split_documents"
+        },
+        {
+          "text": "Thornby Wells\n\nThornby Wells was a spa town for about ninety years and has spent the century since being a comfortable small town of 6,000 that happens to have unusually grand architecture for its size.",
+          "source": "guide_thornby_wells.md",
+          "label": "guide_thornby_wells.md#0",
+          "distance": 0.8794611627843907,
+          "produced_by": "chunker.py::split_documents"
+        }
+      ]
+    }
+  ],
+  "complete": true,
+  "model_calls": 15,
+  "cache_hits": 0,
+  "tokens": {
+    "prompt": 6501,
+    "output": 687,
+    "total": 7188
+  }
+}
