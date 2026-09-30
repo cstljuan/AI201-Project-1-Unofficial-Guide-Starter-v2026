@@ -34,6 +34,8 @@ you a scorer; you'd learn nothing from it.
 
 import argparse
 import datetime as dt
+import json
+from dataclasses import asdict
 import sys
 from pathlib import Path
 
@@ -99,8 +101,27 @@ def main():
     if args.runs < 3:
         print(f"⚠️  {args.runs} run(s). The submission asks for three.\n")
 
+    import generate as gen
+    start_calls = gen.call_count()
     transcript = []
     rows = []
+    config.RESULTS_DIR.mkdir(exist_ok=True)
+    stamp = dt.datetime.now().strftime("%Y-%m-%d_%H%M%S")
+    label = f"_{args.label}" if args.label else ""
+    evidence_path = config.RESULTS_DIR / f"evidence_{stamp}{label}.json"
+    evidence = {
+        "label": args.label, "corpus": corpus, "variant": args.variant,
+        "model": config.MODEL, "embedding_model": config.EMBEDDING_MODEL,
+        "top_k": top_k, "threshold": threshold, "cache": False,
+        "started": dt.datetime.now().isoformat(), "transcript": transcript,
+        "out_of_scope": [], "complete": False,
+    }
+    def checkpoint():
+        evidence["model_calls"] = gen.call_count() - start_calls
+        evidence["cache_hits"] = gen._cache_hits
+        evidence["tokens"] = gen.token_counts()
+        evidence_path.write_text(json.dumps(evidence, indent=2, ensure_ascii=False) + "\n")
+    checkpoint()
 
     for item in items:
         question = item["question"]
@@ -109,9 +130,16 @@ def main():
 
         run_results = []
         for run in range(1, args.runs + 1):
-            answer, results, decision = run_once(
-                question, top_k, threshold, corpus, args.variant
-            )
+            calls_before = gen.call_count()
+            try:
+                answer, results, decision = run_once(
+                    question, top_k, threshold, corpus, args.variant
+                )
+            except Exception as exc:
+                evidence["error"] = {"question": question, "run": run,
+                                     "type": type(exc).__name__, "message": str(exc)}
+                checkpoint()
+                raise
             passed = judge(question, expects, answer, results) if judge else None
             run_results.append(passed)
 
@@ -126,12 +154,21 @@ def main():
                     "sources": sorted({r.source for r in results}),
                     "best_distance": decision.best_distance,
                     "gate_passed": decision.passed,
+                    "chunks": [asdict(r) for r in results],
+                    "model_calls": gen.call_count() - calls_before,
+                    "cache": False,
                 }
             )
+
+            checkpoint()
 
         rows.append({"question": question, "expects": expects, "runs": run_results})
 
     gate_rows = check_out_of_scope(top_k, threshold, corpus, args.variant)
+
+    evidence["out_of_scope"] = gate_rows
+    evidence["complete"] = True
+    checkpoint()
 
     write_report(
         rows, transcript, gate_rows, args, corpus, top_k, threshold,
@@ -168,6 +205,9 @@ def check_out_of_scope(top_k, threshold, corpus, variant):
                 "question": question,
                 "refused": refused,
                 "best_distance": decision.best_distance,
+                "gate_passed": decision.passed,
+                "answer": gate.REFUSAL if refused else None,
+                "chunks": [asdict(r) for r in results],
             }
         )
 
@@ -178,7 +218,7 @@ def check_out_of_scope(top_k, threshold, corpus, variant):
 
 def write_report(rows, transcript, gate_rows, args, corpus, top_k, threshold, scored):
     config.RESULTS_DIR.mkdir(exist_ok=True)
-    stamp = dt.datetime.now().strftime("%Y-%m-%d_%H%M")
+    stamp = dt.datetime.now().strftime("%Y-%m-%d_%H%M%S")
     label = f"_{args.label}" if args.label else ""
     path = config.RESULTS_DIR / f"run_{stamp}{label}.md"
 
@@ -261,6 +301,14 @@ def write_report(rows, transcript, gate_rows, args, corpus, top_k, threshold, sc
             "",
         ]
 
+    lines += ["## Retrieved chunks for every question/run", ""]
+    for entry in transcript:
+        lines += [f"### {entry['question']} / run {entry['run']}", "",
+                  f"Model calls: {entry['model_calls']}; cache=False", ""]
+        for chunk in entry["chunks"]:
+            lines += [f"{chunk['label']} | distance {chunk['distance']:.6f} | {chunk['produced_by']}",
+                      "", "```text", chunk["text"], "```", ""]
+    lines += ["## Cache audit", "", f"{__import__('generate').usage()}", ""]
     path.write_text("\n".join(lines), encoding="utf-8")
 
     import generate as gen

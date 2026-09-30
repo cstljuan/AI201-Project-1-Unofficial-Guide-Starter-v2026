@@ -1,0 +1,519 @@
+{
+  "produced_by": "tools/audit_chunks.py logic (Unit 2 audit)",
+  "total_chunks": 94,
+  "index_chunks": 94,
+  "index_matches_current_chunker": true,
+  "word_boundary_violations": [],
+  "sample_labels": [
+    "guide_accessibility.md#0",
+    "guide_corry_vale.md#5",
+    "guide_givens_mill.md#2",
+    "guide_kestrelford.md#4",
+    "guide_pellew_sands.md#6"
+  ],
+  "sample_heading_count": 4,
+  "sample": [
+    {
+      "text": "Getting around the region with limited mobility\n\nAn honest assessment rather than a promotional one. Some of these places are\ndifficult and it is better to know in advance.",
+      "source": "guide_accessibility.md",
+      "index": 0,
+      "produced_by": "chunker.py::split_documents"
+    },
+    {
+      "text": "Corry Vale — Where to stay\n\nPerhaps thirty beds in the entire valley, spread across two pubs and a handful of farmhouse rooms. In summer these are booked months ahead. Camping is permitted on two marked fields and nowhere else.",
+      "source": "guide_corry_vale.md",
+      "index": 5,
+      "produced_by": "chunker.py::split_documents"
+    },
+    {
+      "text": "Givens Mill — Getting around\n\nEverything is on one street along the river. The mill is at one end and the church at the other, eight minutes apart. The riverside path continues in both directions for as far as you want to walk.",
+      "source": "guide_givens_mill.md",
+      "index": 2,
+      "produced_by": "chunker.py::split_documents"
+    },
+    {
+      "text": "Kestrelford — What to see\n\nThe market square on a Saturday morning is the main event and has run continuously since the 1400s. The parish church has a 13th-century tower you can climb for £2. The old trackbed walk runs six miles to the next village along an easy gradient and is the best half-day here.",
+      "source": "guide_kestrelford.md",
+      "index": 4,
+      "produced_by": "chunker.py::split_documents"
+    },
+    {
+      "text": "Pellew Sands — When to go\n\nJune and September for the beach without the crowds. July and August are busy and the town is at its most itself, for better and worse. Winter is bleak, largely closed, and has a following among people who like that sort of thing.",
+      "source": "guide_pellew_sands.md",
+      "index": 6,
+      "produced_by": "chunker.py::split_documents"
+    }
+  ],
+  "checks": [
+    {
+      "label": "guide_accessibility.md#0",
+      "word_boundaries_intact": true,
+      "section_heading": false
+    },
+    {
+      "label": "guide_accessibility.md#1",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_accessibility.md#2",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_accessibility.md#3",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_accessibility.md#4",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_brightwater.md#0",
+      "word_boundaries_intact": true,
+      "section_heading": false
+    },
+    {
+      "label": "guide_brightwater.md#1",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_brightwater.md#2",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_brightwater.md#3",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_brightwater.md#4",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_brightwater.md#5",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_brightwater.md#6",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_brightwater.md#7",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_corry_vale.md#0",
+      "word_boundaries_intact": true,
+      "section_heading": false
+    },
+    {
+      "label": "guide_corry_vale.md#1",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_corry_vale.md#2",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_corry_vale.md#3",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_corry_vale.md#4",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_corry_vale.md#5",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_corry_vale.md#6",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_corry_vale.md#7",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_eating.md#0",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_eating.md#1",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_eating.md#2",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_eating.md#3",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_eating.md#4",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_elder_ness.md#0",
+      "word_boundaries_intact": true,
+      "section_heading": false
+    },
+    {
+      "label": "guide_elder_ness.md#1",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_elder_ness.md#2",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_elder_ness.md#3",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_elder_ness.md#4",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_elder_ness.md#5",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_elder_ness.md#6",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_elder_ness.md#7",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_givens_mill.md#0",
+      "word_boundaries_intact": true,
+      "section_heading": false
+    },
+    {
+      "label": "guide_givens_mill.md#1",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_givens_mill.md#2",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_givens_mill.md#3",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_givens_mill.md#4",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_givens_mill.md#5",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_givens_mill.md#6",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_givens_mill.md#7",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_halden_bay.md#0",
+      "word_boundaries_intact": true,
+      "section_heading": false
+    },
+    {
+      "label": "guide_halden_bay.md#1",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_halden_bay.md#2",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_halden_bay.md#3",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_halden_bay.md#4",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_halden_bay.md#5",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_halden_bay.md#6",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_halden_bay.md#7",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_kestrelford.md#0",
+      "word_boundaries_intact": true,
+      "section_heading": false
+    },
+    {
+      "label": "guide_kestrelford.md#1",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_kestrelford.md#2",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_kestrelford.md#3",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_kestrelford.md#4",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_kestrelford.md#5",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_kestrelford.md#6",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_kestrelford.md#7",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_marchwood.md#0",
+      "word_boundaries_intact": true,
+      "section_heading": false
+    },
+    {
+      "label": "guide_marchwood.md#1",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_marchwood.md#2",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_marchwood.md#3",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_marchwood.md#4",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_marchwood.md#5",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_marchwood.md#6",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_marchwood.md#7",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_pellew_sands.md#0",
+      "word_boundaries_intact": true,
+      "section_heading": false
+    },
+    {
+      "label": "guide_pellew_sands.md#1",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_pellew_sands.md#2",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_pellew_sands.md#3",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_pellew_sands.md#4",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_pellew_sands.md#5",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_pellew_sands.md#6",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_pellew_sands.md#7",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_regional_transport.md#0",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_regional_transport.md#1",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_regional_transport.md#2",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_regional_transport.md#3",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_seasons.md#0",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_seasons.md#1",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_seasons.md#2",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_seasons.md#3",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_thornby_wells.md#0",
+      "word_boundaries_intact": true,
+      "section_heading": false
+    },
+    {
+      "label": "guide_thornby_wells.md#1",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_thornby_wells.md#2",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_thornby_wells.md#3",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_thornby_wells.md#4",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_thornby_wells.md#5",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_thornby_wells.md#6",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_thornby_wells.md#7",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_walking.md#0",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_walking.md#1",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_walking.md#2",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    },
+    {
+      "label": "guide_walking.md#3",
+      "word_boundaries_intact": true,
+      "section_heading": true
+    }
+  ]
+}
