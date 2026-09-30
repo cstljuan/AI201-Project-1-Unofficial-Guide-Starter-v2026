@@ -192,13 +192,13 @@ The original criteria and questions were committed in `00290f6`, before the head
 | 2. Every answer names a source | Every answer (5 of 5 in-scope questions) | 5/5 | 5/5 | 5/5 | MET |
 | 3. Gate stops out-of-corpus questions | At least 4 of 5 | 5/5 | 5/5 | 5/5 | MET |
 | 4. Chunk word boundaries and section starts | No mid-word boundaries; at least 4 of 5 sampled chunks start at a section heading | 0 violations; 4/5 | 0 violations; 4/5 | 0 violations; 4/5 | MET |
-| 5. Sources named contain the fact | At least 4 of 5 questions | 5/5 | 5/5 | 5/5 | MET |
+| 5. Sources named contain the fact | At least 4 of 5 questions | 4/5 | 5/5 | 5/5 | MET |
 
 The gate was measured once on the original five `OUT_OF_SCOPE` questions because retrieval and the fixed cutoff are deterministic. Criterion 4 was also measured once: all 94 chunk bodies were checked against their original document word boundaries, and the same five sample labels printed in Unit 1 were used, including the preamble. A section start means the existing title/section prefix corresponds to a source `##` heading, not that the output retains Markdown heading syntax. The deterministic values are repeated in the three columns.
 
 Criterion 2 uses the five generated in-scope answers, as specified by its Unit 1 rationale ("All five"). Gate refusals are measured separately in criterion 3 and intentionally have no fabricated citation. The literal phrase "Every answer" is broader than that rationale; next time I would make this scope explicit.
 
-No `scorer.py` exists. These are manual judgments of the saved answers and chunks, not fabricated automated pass labels. For criterion 1, Q1 requires the tower fee, Q2 the railway closure year, Q3 both pub service windows, Q4 the annual flood frequency, and Q5 the Kestrelford evening window plus the Sunday caveat and regional exceptions. For criterion 5, I checked the fact in the named document, not just whether a retrieved filename appeared.
+No `scorer.py` exists. These are manual judgments of the saved answers and chunks, not fabricated automated pass labels. For criterion 1, Q1 requires the tower fee, Q2 the railway closure year, Q3 both pub service windows, Q4 the annual flood frequency, and Q5 the Kestrelford evening window plus the Sunday caveat and regional exceptions. For criterion 5, I checked factual assertions against the named document, not just whether a retrieved filename appeared. An unsupported extra assertion counts as a failure even when the requested core fact has the right source.
 
 | Question | Retrieved fact, each run | Names source, runs 1/2/3 | Factual citation, runs 1/2/3 | Supporting retrieved chunk |
 |---|---|---|---|---|
@@ -206,9 +206,9 @@ No `scorer.py` exists. These are manual judgments of the saved answers and chunk
 | Railway closure | PASS/PASS/PASS | PASS/PASS/PASS | PASS/PASS/PASS | `guide_regional_transport.md#0` |
 | Elder Ness pub hours | PASS/PASS/PASS | PASS/PASS/PASS | PASS/PASS/PASS | `guide_elder_ness.md#3` |
 | Elder Ness floods | PASS/PASS/PASS | PASS/PASS/PASS | PASS/PASS/PASS | `guide_elder_ness.md#1` |
-| Kestrelford Sunday evening | PASS/PASS/PASS | PASS/PASS/PASS | PASS/PASS/PASS | `guide_eating.md#1` |
+| Kestrelford Sunday evening | PASS/PASS/PASS | PASS/PASS/PASS | FAIL/PASS/PASS | `guide_eating.md#1` |
 
-The last row measures the original retrieval and attribution criteria, not a guarantee that Sunday dining is available. The source explicitly says Sunday evening is difficult, and gives general hours without confirming Sunday opening.
+The last row passes retrieval because the required hours and caveat are present. Run 1 fails factual attribution because it adds that the windows apply to Sunday evenings, which neither cited document confirms. Runs 2 and 3 report the hours and caveat without that unsupported guarantee.
 
 ### Actual baseline outputs
 
@@ -288,9 +288,9 @@ The index contains 94 chunks and matches the current Unit 1 chunker exactly. It 
 | 2 | MET | Every one of the 15 in-scope generated answers names a source; each run scores 5/5. |
 | 3 | MET | All five out-of-scope questions are refused at threshold 0.6, exceeding 4/5. |
 | 4 | MET | All 94 bodies preserve word boundaries and four of the original five samples start at a source section heading; the preamble stays in the denominator. |
-| 5 | MET | Each run scores 5/5: the cited documents contain the stated core facts, including the regional Sunday warning in `guide_eating.md`. |
+| 5 | MET | Runs score 4/5, 5/5, 5/5. Q5 run 1 adds an unsupported Sunday assertion, but every run still meets the original 4/5 target. |
 
-There is no criterion-level miss to explain away. No target was lowered and no original criterion was revised. These criteria are measurable with the scope and sample made explicit above, but they do not measure every unsupported inference in a generated answer. Criterion 2's scope and criterion 4's sample protocol should have been written explicitly in Unit 1; criterion 5 also leaves room for a correct core fact alongside an unsupported extra claim.
+There is no criterion-level miss to explain away. No target was lowered and no original criterion was revised. These criteria are measurable with the scope and sample made explicit above, but they do not measure every unsupported inference in a generated answer. Criterion 2's scope and criterion 4's sample protocol should have been written explicitly in Unit 1; criterion 5 should state explicitly how to score unsupported extra claims. Here I counted those as failures consistently rather than crediting only a correctly sourced core fact.
 
 ## Diagnoses
 
@@ -300,7 +300,7 @@ No original criterion was missed. The targets were easy on this small, structure
 
 **Correction to the Unit 1 rationale:** the original notes say Q5 cannot be answered from one document and needs two. Inspection shows `guide_eating.md#1` contains both Kestrelford's hours and the Sunday warning. The original text remains visible; this correction explains why retrieval scored 5/5 without changing the criterion.
 
-**Retrieval-stage opportunity:** the Q5 top five include lodging (`guide_kestrelford.md#5`), sightseeing (`guide_kestrelford.md#4`), and Sunday lunch (`guide_eating.md#3`). Only the first two chunks directly resolve the evening question. The semantic search retrieves related town material even when the section does not answer the question. This noise is observed; a causal effect on answer quality is only a hypothesis. The factual answers and source attributions still passed.
+**Retrieval-stage opportunity:** the Q5 top five include lodging (`guide_kestrelford.md#5`), sightseeing (`guide_kestrelford.md#4`), and Sunday lunch (`guide_eating.md#3`). Only the first two chunks directly resolve the evening question. The semantic search retrieves related town material even when the section does not answer the question. This noise is observed; a causal effect on answer quality is only a hypothesis. All criterion-level targets still passed, although Q5 run 1 failed source support for its extra Sunday assertion.
 
 There is no evidence of a loading, chunking, or embedding failure on these questions: all required facts are loaded, the index matches the chunker, and their containing chunks are retrieved.
 
@@ -316,7 +316,7 @@ I will compare `before` to `after` with all five questions run three times and a
 
 After the primary comparison, I will make exactly one further change: reduce `config.py::TOP_K` from 5 to 3. I will measure it against the completed primary `after` state, retaining the prompt improvement, with a full `after_stretch` evaluation. This tests whether a smaller context retains the required facts and factual citations while reducing retrieved noise and measured prompt tokens. I predict no acceptance-criterion gain because the baseline already passes. Any quality or token change will be reported as measured, including regressions. No gate tuning, hybrid search, chunking, or other feature will be bundled with this comparison.
 
-The primary prompt change and stretch top-k change will be separate commits and separate full evaluations. Results are recorded below.
+The primary prompt change and stretch top-k change are separate commits and separate full evaluations. Results are recorded below.
 
 ### Primary implementation and Run Log - After
 
@@ -376,9 +376,9 @@ Based on the provided documents, Kestrelford's pubs serve food between 12 and 2 
 
 All 15 complete answers and retrieved chunks: [primary after report](results/run_2026-09-30_163802_after.md), [JSON evidence](results/evidence_2026-09-30_163744_after.json), and [chunk audit](results/chunks-after.json). The evaluation made 15 real model calls, zero cache hits.
 
-**Did it help?** The five original criteria stayed MET with identical scores. The supplementary Sunday-uncertainty observation improved from **0/3 to 3/3**: every after answer explicitly states that Sunday availability is unconfirmed. This is a small, exploratory result on one question, not proof of improvement on unseen questions. All primary after retrieved chunks and distances match baseline, localizing the observed wording change to generation. Prompt tokens increased from **8,358 to 9,078** (+720, 8.6%) because of the added instruction; output tokens changed from 714 to 709.
+**Did it help?** The five original criteria stayed MET. Criterion 5 improved from 4/5, 5/5, 5/5 to 5/5 in all three runs; the other four criterion scores stayed identical. The supplementary Sunday-uncertainty observation improved from **0/3 to 3/3**: every after answer explicitly states that Sunday availability is unconfirmed. This is a small, exploratory result on one question, not proof of improvement on unseen questions. All primary after retrieved chunks and distances match baseline, localizing the observed wording change to generation. Prompt tokens increased from **8,358 to 9,078** (+720, 8.6%) because of the added instruction; output tokens changed from 714 to 709.
 
-The next comparison will execute the previously declared stretch change, top-k 5 to 3, with this prompt held fixed.
+The next comparison executed the previously declared stretch change, top-k 5 to 3, with this prompt held fixed.
 
 ### Stretch implementation and Run Log - After Stretch
 
@@ -390,11 +390,11 @@ The stretch was declared in commit `338bc0a` before either improvement began. It
 | 2. Every answer names a source | Every in-scope answer, 5 of 5 | 5/5 | 5/5 | 5/5 | MET |
 | 3. Gate stops out-of-corpus questions | At least 4 of 5 | 5/5 | 5/5 | 5/5 | MET |
 | 4. Chunk word boundaries and section starts | No mid-word boundaries; at least 4 of 5 section starts | 0 violations; 4/5 | 0 violations; 4/5 | 0 violations; 4/5 | MET |
-| 5. Sources named contain the fact | At least 4 of 5 questions | 5/5 | 5/5 | 5/5 | MET |
+| 5. Sources named contain the fact | At least 4 of 5 questions | 4/5 | 4/5 | 4/5 | MET |
 
-The verdicts follow the same rule as before: the requested facts are retrieved in all runs, all answers cite a source, the named source contains the requested fact, the gate refuses 5/5, and the unchanged chunk audit passes. Criterion 5 is document-level provenance of the requested fact; it does not establish that every added clause is true. The pub answer still cites `guide_elder_ness.md`, which contains both requested service windows. The contradictory Monday clause below is a real failure that these original targets fail to capture. This scoring limitation applies consistently to all three phases, rather than redefining a target after seeing a regression.
+The verdicts follow the same rule as before: the requested facts are retrieved in all runs, all answers cite a source, the gate refuses 5/5, and the unchanged chunk audit passes. Criterion 5 scores 4/5 in each run: the pub answer has the right source for its hours, but its extra Monday-uncertainty assertion contradicts that source, so it fails. The other four answers pass. The 4/5 original target is met in every run without ignoring the contradiction. This is the same treatment given to the unsupported extra Sunday assertion in baseline Q5 run 1.
 
-Criteria 3 and 4 are measured once and repeated. Manual labels for all five questions are PASS/PASS/PASS on retrieval, source naming, and requested-fact attribution. The retained supporting chunk labels match the baseline support table.
+Criteria 3 and 4 are measured once and repeated. Manual retrieval and source-naming labels are PASS/PASS/PASS for every question. Factual attribution is FAIL/FAIL/FAIL for Q3 and PASS/PASS/PASS for the other four. The retained supporting chunk labels match the baseline support table.
 
 #### Actual stretch outputs
 
@@ -454,7 +454,7 @@ The pub at Elder Ness serves food from 12 to 2 and 6 to 8, but its availability 
 
 Full stretch evidence: [report](results/run_2026-09-30_164030_after_stretch.md), [JSON](results/evidence_2026-09-30_164005_after_stretch.json), and [chunk audit](results/chunks-after-stretch.json). It made 15 real model calls, zero cache hits.
 
-**Did the stretch help?** It helped context cost but made the pub answer worse. Prompt tokens fell **9,078 to 6,501**, a reduction of **2,577 (28.4%)**, with the prompt instruction held fixed. Retrieved context fell from five to three chunks per question (75 to 45 chunks across the 15 calls). The five original criterion scores stayed unchanged, and Q5 still explicitly flags Sunday uncertainty in **3/3** runs. However, contradictory Monday-uncertainty language appears in **3/3** Q3 answers, versus **0/3** in baseline and **0/3** in the primary after run. This narrower regression check was discovered after the stretch, so it is exploratory, not a precommitted criterion.
+**Did the stretch help?** It helped context cost but made the pub answer worse. Prompt tokens fell **9,078 to 6,501**, a reduction of **2,577 (28.4%)**, with the prompt instruction held fixed. Retrieved context fell from five to three chunks per question (75 to 45 chunks across the 15 calls). The first four criterion scores stayed unchanged; criterion 5 fell from 5/5 to 4/5 in every run, still meeting its target. Q5 still explicitly flags Sunday uncertainty in **3/3** runs. However, contradictory Monday-uncertainty language appears in **3/3** Q3 answers, versus **0/3** in baseline and **0/3** in the primary after run. This narrower regression check was discovered after the stretch, so it is exploratory, not a precommitted criterion.
 
 **Regression diagnosis, generation stage and mechanism:** all three stretch Q3 runs retrieve `guide_elder_ness.md#3`, whose full text explicitly says "closed Mondays". Thus the answer is present in the context and the gate passes at best distance 0.168684; loading, chunking, and retrieval do not explain the Monday contradiction. Generation applies uncertainty language to an explicit closure, even though the question does not name Monday. A plausible mechanism is overgeneralization of the new day-specific instruction under the shorter context. The changed context and these three outputs support an association; they do not prove why the model applied the rule incorrectly. The prompt requires confirmation of service but does not explicitly distinguish confirmed non-service from unknown availability. That is a hypothesis for a future isolated prompt experiment, not a confirmed cause.
 
@@ -466,7 +466,7 @@ Full stretch evidence: [report](results/run_2026-09-30_164030_after_stretch.md),
 | Criterion 2, runs 1/2/3 | 5/5, 5/5, 5/5 | 5/5, 5/5, 5/5 | 5/5, 5/5, 5/5 |
 | Criterion 3, deterministic refusals | 5/5 | 5/5 | 5/5 |
 | Criterion 4, deterministic audit | 0 word splits; 4/5 section starts | 0 word splits; 4/5 section starts | 0 word splits; 4/5 section starts |
-| Criterion 5, runs 1/2/3 | 5/5, 5/5, 5/5 | 5/5, 5/5, 5/5 | 5/5, 5/5, 5/5 |
+| Criterion 5, runs 1/2/3 | 4/5, 5/5, 5/5 | 5/5, 5/5, 5/5 | 4/5, 4/5, 4/5 |
 | Q5 explicitly says Sunday unconfirmed (exploratory) | 0/3 | 3/3 | 3/3 |
 | Q3 contradicts Monday closure (exploratory) | 0/3 | 0/3 | 3/3 |
 | Prompt tokens, reported by service | 8,358 | 9,078 | 6,501 |
@@ -485,7 +485,7 @@ The corpus does not name a specific Kestrelford pub or verify Sunday service. A 
 
 ## What I'd Do Differently
 
-I would primarily rewrite **criterion 5** next time: "In all three runs, at least 4 of 5 answers have every factual claim supported by the source cited for that claim, with no contradiction of an explicit closure or other qualifier." The original checks that a named document contains the requested fact, so an answer can give the correct hours, cite the right document, and still append an incorrect Monday inference. I would specify clause-level evidence and a rule for unsupported extras before running the next experiment. This is a future criterion, not a changed target used to grade these results.
+I would primarily rewrite **criterion 5** next time: "In all three runs, at least 4 of 5 answers have every factual claim supported by the source cited for that claim, with no contradiction of an explicit closure or other qualifier." The original is underspecified about extra assertions. I ultimately scored them as failures: Q5 run 1 before, and all three Q3 stretch answers. I would specify clause-level evidence and a rule for unsupported extras before running the next experiment, so this judgment does not need a final review clarification. Even this stricter scoring allows one failed answer per run, so I would also consider requiring 5/5 once the basic pattern is fixed. This is a future criterion, not a changed target used to grade these results.
 
 For **criterion 1**, I would require 5/5 retrieval coverage and choose at least two questions whose required evidence truly lives in different documents. I would inspect the corpus carefully enough to avoid calling Q5 multi-document when one opening-hours chunk contains both facts. For **criterion 2**, I would explicitly say "all five generated in-scope answers" and describe citation-free gate refusals separately. For **criterion 4**, I would record the five sample labels and define a title/section prefix as a section start before testing. These are clarity and coverage improvements for the next unit, not easier replacement targets.
 
@@ -505,3 +505,7 @@ For **criterion 1**, I would require 5/5 retrieval coverage and choose at least 
 Activate the existing environment before running commands. `ff2055b` records the baseline system and evidence harness; `1593749` records the primary prompt improvement at top-k 5; `7497b55` records the stretch at top-k 3. Check out the corresponding state in this same repository to reproduce a phase, then run `python run_eval.py --label before`, `python run_eval.py --label after`, or `python run_eval.py --label after_stretch`, respectively. Run `python tools/audit_chunks.py --label LABEL` for the matching deterministic chunk audit. New API answers may vary; the committed logs preserve what was actually measured.
 
 `run_eval.py` does not automatically score these answers because no `scorer.py` exists. The manually reviewed per-question labels, original criterion aggregates, and supplementary failure observations are preserved in `results/manual-judgments.json`. The exploratory checks are explicitly distinguished from the Unit 1 acceptance criteria.
+
+### Final scoring audit correction
+
+The initial draft counted only support for each answer's requested core fact in criterion 5. The final review applies the unchanged original source-support criterion conservatively to extra factual assertions as well. Therefore baseline Q5 run 1 is FAIL for its unsupported Sunday inference, and stretch Q3 is FAIL in all three runs for contradicting the explicit Monday closure. Baseline criterion 5 is **4/5, 5/5, 5/5**; primary after is **5/5, 5/5, 5/5**; stretch is **4/5, 4/5, 4/5**. All three still meet the original target of at least 4/5 in every run. Raw outputs are unchanged. This correction is a new commit rather than rewritten milestone history.
