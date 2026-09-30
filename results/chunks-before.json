@@ -1,5 +1,5 @@
 {
-  "produced_by": "tools/audit_chunks.py logic (Unit 2 audit)",
+  "produced_by": "tools/audit_chunks.py::audit",
   "total_chunks": 94,
   "index_chunks": 94,
   "index_matches_current_chunker": true,

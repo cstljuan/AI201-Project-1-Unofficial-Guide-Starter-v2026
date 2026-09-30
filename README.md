@@ -279,15 +279,41 @@ The index contains 94 chunks and matches the current Unit 1 chunker exactly. It 
 
 ## Verdicts
 
-Pending the separate verdict and diagnosis milestone.
+| Criterion | Verdict | Decision against the original target |
+|---|---|---|
+| 1 | MET | All five questions have the required facts in the top five chunks in every run, exceeding 4/5. |
+| 2 | MET | Every one of the 15 in-scope generated answers names a source; each run scores 5/5. |
+| 3 | MET | All five out-of-scope questions are refused at threshold 0.6, exceeding 4/5. |
+| 4 | MET | All 94 bodies preserve word boundaries and four of the original five samples start at a source section heading; the preamble stays in the denominator. |
+| 5 | MET | Each run scores 5/5: the cited documents contain the stated core facts, including the regional Sunday warning in `guide_eating.md`. |
+
+There is no criterion-level miss to explain away. No target was lowered and no original criterion was revised. These criteria are measurable with the scope and sample made explicit above, but they do not measure every unsupported inference in a generated answer. Criterion 2's scope and criterion 4's sample protocol should have been written explicitly in Unit 1; criterion 5 also leaves room for a correct core fact alongside an unsupported extra claim.
 
 ## Diagnoses
 
-Pending the separate verdict and diagnosis milestone.
+No original criterion was missed. The targets were easy on this small, structured corpus: the gate questions are from completely unrelated domains, four factual questions have single-sentence answers, and retrieval found the fifth question's information in one chunk. Next time I would tighten criterion 1 to **5/5 in every run**, including separately chosen questions requiring genuine synthesis across documents. That is a future proposal, not a replacement target for these runs.
+
+**Evidence-supported limitation, generation stage:** Q5 run 1 says the pub windows "apply to Sunday evenings as well". `guide_kestrelford.md#3` gives general pub hours; `guide_eating.md#1` repeats those hours and warns that Sunday evening is hard outside Marchwood and Thornby Wells. Neither confirms that Kestrelford pubs serve on Sunday. The chunks contain the warning, so this uncertainty is present upstream and is lost when generation treats general hours as day-specific availability. This is an unsupported inference, not proof that the pubs are closed. Runs 2 and 3 repeat hours and the caveat but also do not explicitly say Sunday opening is unconfirmed. The mechanism is incomplete handling of the source's qualifications; the original prompt's general grounding rule did not prevent it in run 1.
+
+**Correction to the Unit 1 rationale:** the original notes say Q5 cannot be answered from one document and needs two. Inspection shows `guide_eating.md#1` contains both Kestrelford's hours and the Sunday warning. The original text remains visible; this correction explains why retrieval scored 5/5 without changing the criterion.
+
+**Retrieval-stage opportunity:** the Q5 top five include lodging (`guide_kestrelford.md#5`), sightseeing (`guide_kestrelford.md#4`), and Sunday lunch (`guide_eating.md#3`). Only the first two chunks directly resolve the evening question. The semantic search retrieves related town material even when the section does not answer the question. This noise is observed; a causal effect on answer quality is only a hypothesis. The factual answers and source attributions still passed.
+
+There is no evidence of a loading, chunking, or embedding failure on these questions: all required facts are loaded, the index matches the chunker, and their containing chunks are retrieved.
 
 ## The Improvement
 
-Pending the diagnosis-driven prompt experiment and full after evaluation.
+### Declared before implementation: primary improvement
+
+I will add one rule to `generate.py::GROUNDING_INSTRUCTION`: general opening hours do not confirm service on a particular day, and the answer must explicitly state that uncertainty unless the provided text confirms the day. This targets Q5's unsupported Sunday inference while keeping retrieval, chunks, models, corpus, gate, and all original criteria unchanged.
+
+I will compare `before` to `after` with all five questions run three times and all five gate questions measured once. Alongside the unchanged five criteria, I will report the narrower supplementary observation: how many of the three Q5 answers explicitly state that Sunday service is unconfirmed. Baseline: **0/3**, read from the saved outputs. This observation was declared after the baseline, so it is exploratory and not an original acceptance criterion.
+
+### Stretch plan, declared before implementation
+
+After the primary comparison, I will make exactly one further change: reduce `config.py::TOP_K` from 5 to 3. I will measure it against the completed primary `after` state, retaining the prompt improvement, with a full `after_stretch` evaluation. This tests whether a smaller context retains the required facts and factual citations while reducing retrieved noise and measured prompt tokens. I predict no acceptance-criterion gain because the baseline already passes. Any quality or token change will be reported as measured, including regressions. No gate tuning, hybrid search, chunking, or other feature will be bundled with this comparison.
+
+The primary prompt change and stretch top-k change will be separate commits and separate full evaluations. Results will be added below.
 
 ## What's Still Broken
 
