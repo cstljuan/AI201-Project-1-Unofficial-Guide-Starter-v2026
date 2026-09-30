@@ -1,0 +1,31 @@
+{
+  "unit1_preserved": true,
+  "original_fork_url": "https://github.com/cstljuan/ai201-project1-unofficial-guide-starter-v2026",
+  "course_portal_receipt_available": false,
+  "phases": {
+    "before": {
+      "generated_answers": 15,
+      "out_of_scope_questions": 5,
+      "calls": 15,
+      "cache_hits": 0,
+      "prompt_tokens": 8358
+    },
+    "after": {
+      "generated_answers": 15,
+      "out_of_scope_questions": 5,
+      "calls": 15,
+      "cache_hits": 0,
+      "prompt_tokens": 9078
+    },
+    "after_stretch": {
+      "generated_answers": 15,
+      "out_of_scope_questions": 5,
+      "calls": 15,
+      "cache_hits": 0,
+      "prompt_tokens": 6501
+    }
+  },
+  "primary_retrieval_identical_to_baseline": true,
+  "stretch_retrieval_is_top3_prefix": true,
+  "external_submission_performed": false
+}

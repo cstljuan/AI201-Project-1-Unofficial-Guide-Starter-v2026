@@ -174,6 +174,9 @@ what would happen on a corpus whose sections run longer than 800 characters —
 nothing in `city_guides` triggers it, but without it the chunker silently emits
 chunks of unbounded size.
 
+
+**Unit 2 assistance:** I used Codex to inspect the existing repository and commit history, scan the Obsidian vault for course and device context, and run the original questions with caching disabled. Codex extended the evaluation harness to save chunks and call counts, manually checked answers and factual citations, and identified both the unsupported Sunday inference and the new Monday-closure contradiction in the stretch outputs. It implemented the one grounding-prompt rule and the separate top-k change, ran all three full evaluations, drafted this write-up and the reflection, and made the milestone commits. No automated scorer was used. The measured token counts and answers come from actual calls; the diagnoses distinguish observed failures from hypotheses. These judgments and the proposed future criteria remain for my review.
+
 ---
 
 # Unit 2
@@ -474,8 +477,31 @@ The final measured system retains both sequential changes: the day-specific grou
 
 ## What's Still Broken
 
-Pending the measured comparisons.
+None of the five original criteria remains MISSED, but that does not mean the system is fully correct. The stretch introduced contradictory Monday-availability wording in all three pub answers, despite retrieving the explicit closure. Next I would run one isolated prompt experiment that treats explicit closures as confirmed non-service and applies uncertainty only to genuinely unspecified days. I would hold top-k at 3 and rerun the full suite, including an explicit check that "closed Mondays" stays a closure. I stopped here to preserve the primary and stretch comparisons as separate single changes, rather than bundling a third fix into either result.
+
+The original evaluation set also has limited coverage. I would add near-domain out-of-scope questions (for example, exact bookings or current opening status absent from these fictional guides) to challenge the gate, and genuinely separate-document questions to test synthesis. The five original out-of-scope questions are so far from travel that a 5/5 result does not establish a well-calibrated gate for realistic unknowns. Those additions are future work; this submission keeps the original ten questions unchanged.
+
+The corpus does not name a specific Kestrelford pub or verify Sunday service. A retrieval or prompt change cannot manufacture that missing information. With corpus changes outside this unit's scope, an honest uncertain answer is the appropriate limit.
 
 ## What I'd Do Differently
 
-Pending final reflection.
+I would primarily rewrite **criterion 5** next time: "In all three runs, at least 4 of 5 answers have every factual claim supported by the source cited for that claim, with no contradiction of an explicit closure or other qualifier." The original checks that a named document contains the requested fact, so an answer can give the correct hours, cite the right document, and still append an incorrect Monday inference. I would specify clause-level evidence and a rule for unsupported extras before running the next experiment. This is a future criterion, not a changed target used to grade these results.
+
+For **criterion 1**, I would require 5/5 retrieval coverage and choose at least two questions whose required evidence truly lives in different documents. I would inspect the corpus carefully enough to avoid calling Q5 multi-document when one opening-hours chunk contains both facts. For **criterion 2**, I would explicitly say "all five generated in-scope answers" and describe citation-free gate refusals separately. For **criterion 4**, I would record the five sample labels and define a title/section prefix as a section start before testing. These are clarity and coverage improvements for the next unit, not easier replacement targets.
+
+### Submission checklist and repository continuity
+
+- `criteria.md` is byte-for-byte unchanged from Unit 1; all original targets and rationale remain visible.
+- `questions.py`, all corpus documents, chunker, loader, embedder, gate, and `RUNNING.md` are unchanged.
+- `results/` contains complete baseline, primary after, and stretch after evidence, full answers, retrieved chunks and distances, gate decisions, and chunk audits. Each phase has 15 uncached generated answers and five deterministic out-of-scope measurements.
+- The README includes all five criteria in each run table, actual outputs with producing file/function, verdict explanations, diagnoses and their limits, two separately measured changes, remaining work, reflection, and AI disclosure.
+- Unit 2 has at least four new milestone commits on top of `5e9663f`; the history is not rewritten.
+- GitHub confirms this is the existing `cstljuan` fork of CodePath's starter; the Unit 1 commit `5e9663f` is attributed to the GitHub account `cstljuan`. The same existing remote URL is the URL to use again: **https://github.com/cstljuan/ai201-project1-unofficial-guide-starter-v2026**. A Unit 1 course-portal submission receipt is not present in the repository or vault, so I cannot independently verify the URL entered in that form.
+- The original checkout remains under `~/Projects/CodePath/AI201/ai201-project1-unofficial-guide-starter-v2026`. `~/Projects/CodePath/AI201/Unit-2/project` is a link to this same checkout, and `unit2/README.md` is a committed module entry point.
+- Changes are committed locally for review. Nothing was pushed or submitted externally in this session, following the requested review boundary. Publishing these commits to the existing fork and submitting that URL are still external steps.
+
+### Reproducing the measured states
+
+Activate the existing environment before running commands. `ff2055b` records the baseline system and evidence harness; `1593749` records the primary prompt improvement at top-k 5; `7497b55` records the stretch at top-k 3. Check out the corresponding state in this same repository to reproduce a phase, then run `python run_eval.py --label before`, `python run_eval.py --label after`, or `python run_eval.py --label after_stretch`, respectively. Run `python tools/audit_chunks.py --label LABEL` for the matching deterministic chunk audit. New API answers may vary; the committed logs preserve what was actually measured.
+
+`run_eval.py` does not automatically score these answers because no `scorer.py` exists. The manually reviewed per-question labels, original criterion aggregates, and supplementary failure observations are preserved in `results/manual-judgments.json`. The exploratory checks are explicitly distinguished from the Unit 1 acceptance criteria.

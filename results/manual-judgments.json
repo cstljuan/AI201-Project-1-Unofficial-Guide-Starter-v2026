@@ -1,0 +1,514 @@
+{
+  "method": "Manual review of actual saved answers and chunks; no scorer.py",
+  "criterion_2_scope": "Five in-scope generated answers, following original Unit 1 rationale. Gate refusals scored separately.",
+  "criterion_5_scope": "Requested fact appears in named document, as original criterion specifies. Extra unsupported clauses recorded separately.",
+  "phases": {
+    "before": {
+      "evidence_file": "evidence_2026-09-30_163317_before.json",
+      "questions": [
+        {
+          "question": "How much does it cost to climb the church tower in Kestrelford?",
+          "run": 1,
+          "retrieved_requested_fact": "PASS",
+          "names_source": "PASS",
+          "named_document_contains_requested_fact": "PASS",
+          "explicit_sunday_uncertainty": false,
+          "contradictory_monday_uncertainty": false
+        },
+        {
+          "question": "How much does it cost to climb the church tower in Kestrelford?",
+          "run": 2,
+          "retrieved_requested_fact": "PASS",
+          "names_source": "PASS",
+          "named_document_contains_requested_fact": "PASS",
+          "explicit_sunday_uncertainty": false,
+          "contradictory_monday_uncertainty": false
+        },
+        {
+          "question": "How much does it cost to climb the church tower in Kestrelford?",
+          "run": 3,
+          "retrieved_requested_fact": "PASS",
+          "names_source": "PASS",
+          "named_document_contains_requested_fact": "PASS",
+          "explicit_sunday_uncertainty": false,
+          "contradictory_monday_uncertainty": false
+        },
+        {
+          "question": "When did the railway line north of Brightwater close?",
+          "run": 1,
+          "retrieved_requested_fact": "PASS",
+          "names_source": "PASS",
+          "named_document_contains_requested_fact": "PASS",
+          "explicit_sunday_uncertainty": false,
+          "contradictory_monday_uncertainty": false
+        },
+        {
+          "question": "When did the railway line north of Brightwater close?",
+          "run": 2,
+          "retrieved_requested_fact": "PASS",
+          "names_source": "PASS",
+          "named_document_contains_requested_fact": "PASS",
+          "explicit_sunday_uncertainty": false,
+          "contradictory_monday_uncertainty": false
+        },
+        {
+          "question": "When did the railway line north of Brightwater close?",
+          "run": 3,
+          "retrieved_requested_fact": "PASS",
+          "names_source": "PASS",
+          "named_document_contains_requested_fact": "PASS",
+          "explicit_sunday_uncertainty": false,
+          "contradictory_monday_uncertainty": false
+        },
+        {
+          "question": "What times does the pub at Elder Ness serve food?",
+          "run": 1,
+          "retrieved_requested_fact": "PASS",
+          "names_source": "PASS",
+          "named_document_contains_requested_fact": "PASS",
+          "explicit_sunday_uncertainty": false,
+          "contradictory_monday_uncertainty": false
+        },
+        {
+          "question": "What times does the pub at Elder Ness serve food?",
+          "run": 2,
+          "retrieved_requested_fact": "PASS",
+          "names_source": "PASS",
+          "named_document_contains_requested_fact": "PASS",
+          "explicit_sunday_uncertainty": false,
+          "contradictory_monday_uncertainty": false
+        },
+        {
+          "question": "What times does the pub at Elder Ness serve food?",
+          "run": 3,
+          "retrieved_requested_fact": "PASS",
+          "names_source": "PASS",
+          "named_document_contains_requested_fact": "PASS",
+          "explicit_sunday_uncertainty": false,
+          "contradictory_monday_uncertainty": false
+        },
+        {
+          "question": "How often does the road to Elder Ness flood?",
+          "run": 1,
+          "retrieved_requested_fact": "PASS",
+          "names_source": "PASS",
+          "named_document_contains_requested_fact": "PASS",
+          "explicit_sunday_uncertainty": false,
+          "contradictory_monday_uncertainty": false
+        },
+        {
+          "question": "How often does the road to Elder Ness flood?",
+          "run": 2,
+          "retrieved_requested_fact": "PASS",
+          "names_source": "PASS",
+          "named_document_contains_requested_fact": "PASS",
+          "explicit_sunday_uncertainty": false,
+          "contradictory_monday_uncertainty": false
+        },
+        {
+          "question": "How often does the road to Elder Ness flood?",
+          "run": 3,
+          "retrieved_requested_fact": "PASS",
+          "names_source": "PASS",
+          "named_document_contains_requested_fact": "PASS",
+          "explicit_sunday_uncertainty": false,
+          "contradictory_monday_uncertainty": false
+        },
+        {
+          "question": "Where can I eat in Kestrelford on a Sunday evening?",
+          "run": 1,
+          "retrieved_requested_fact": "PASS",
+          "names_source": "PASS",
+          "named_document_contains_requested_fact": "PASS",
+          "explicit_sunday_uncertainty": false,
+          "contradictory_monday_uncertainty": false
+        },
+        {
+          "question": "Where can I eat in Kestrelford on a Sunday evening?",
+          "run": 2,
+          "retrieved_requested_fact": "PASS",
+          "names_source": "PASS",
+          "named_document_contains_requested_fact": "PASS",
+          "explicit_sunday_uncertainty": false,
+          "contradictory_monday_uncertainty": false
+        },
+        {
+          "question": "Where can I eat in Kestrelford on a Sunday evening?",
+          "run": 3,
+          "retrieved_requested_fact": "PASS",
+          "names_source": "PASS",
+          "named_document_contains_requested_fact": "PASS",
+          "explicit_sunday_uncertainty": false,
+          "contradictory_monday_uncertainty": false
+        }
+      ],
+      "criteria": {
+        "1": [
+          5,
+          5,
+          5
+        ],
+        "2": [
+          5,
+          5,
+          5
+        ],
+        "3": 5,
+        "4": {
+          "word_boundary_violations": 0,
+          "sample_section_starts": 4
+        },
+        "5": [
+          5,
+          5,
+          5
+        ]
+      },
+      "verdicts": {
+        "1": "MET",
+        "2": "MET",
+        "3": "MET",
+        "4": "MET",
+        "5": "MET"
+      }
+    },
+    "after": {
+      "evidence_file": "evidence_2026-09-30_163744_after.json",
+      "questions": [
+        {
+          "question": "How much does it cost to climb the church tower in Kestrelford?",
+          "run": 1,
+          "retrieved_requested_fact": "PASS",
+          "names_source": "PASS",
+          "named_document_contains_requested_fact": "PASS",
+          "explicit_sunday_uncertainty": false,
+          "contradictory_monday_uncertainty": false
+        },
+        {
+          "question": "How much does it cost to climb the church tower in Kestrelford?",
+          "run": 2,
+          "retrieved_requested_fact": "PASS",
+          "names_source": "PASS",
+          "named_document_contains_requested_fact": "PASS",
+          "explicit_sunday_uncertainty": false,
+          "contradictory_monday_uncertainty": false
+        },
+        {
+          "question": "How much does it cost to climb the church tower in Kestrelford?",
+          "run": 3,
+          "retrieved_requested_fact": "PASS",
+          "names_source": "PASS",
+          "named_document_contains_requested_fact": "PASS",
+          "explicit_sunday_uncertainty": false,
+          "contradictory_monday_uncertainty": false
+        },
+        {
+          "question": "When did the railway line north of Brightwater close?",
+          "run": 1,
+          "retrieved_requested_fact": "PASS",
+          "names_source": "PASS",
+          "named_document_contains_requested_fact": "PASS",
+          "explicit_sunday_uncertainty": false,
+          "contradictory_monday_uncertainty": false
+        },
+        {
+          "question": "When did the railway line north of Brightwater close?",
+          "run": 2,
+          "retrieved_requested_fact": "PASS",
+          "names_source": "PASS",
+          "named_document_contains_requested_fact": "PASS",
+          "explicit_sunday_uncertainty": false,
+          "contradictory_monday_uncertainty": false
+        },
+        {
+          "question": "When did the railway line north of Brightwater close?",
+          "run": 3,
+          "retrieved_requested_fact": "PASS",
+          "names_source": "PASS",
+          "named_document_contains_requested_fact": "PASS",
+          "explicit_sunday_uncertainty": false,
+          "contradictory_monday_uncertainty": false
+        },
+        {
+          "question": "What times does the pub at Elder Ness serve food?",
+          "run": 1,
+          "retrieved_requested_fact": "PASS",
+          "names_source": "PASS",
+          "named_document_contains_requested_fact": "PASS",
+          "explicit_sunday_uncertainty": false,
+          "contradictory_monday_uncertainty": false
+        },
+        {
+          "question": "What times does the pub at Elder Ness serve food?",
+          "run": 2,
+          "retrieved_requested_fact": "PASS",
+          "names_source": "PASS",
+          "named_document_contains_requested_fact": "PASS",
+          "explicit_sunday_uncertainty": false,
+          "contradictory_monday_uncertainty": false
+        },
+        {
+          "question": "What times does the pub at Elder Ness serve food?",
+          "run": 3,
+          "retrieved_requested_fact": "PASS",
+          "names_source": "PASS",
+          "named_document_contains_requested_fact": "PASS",
+          "explicit_sunday_uncertainty": false,
+          "contradictory_monday_uncertainty": false
+        },
+        {
+          "question": "How often does the road to Elder Ness flood?",
+          "run": 1,
+          "retrieved_requested_fact": "PASS",
+          "names_source": "PASS",
+          "named_document_contains_requested_fact": "PASS",
+          "explicit_sunday_uncertainty": false,
+          "contradictory_monday_uncertainty": false
+        },
+        {
+          "question": "How often does the road to Elder Ness flood?",
+          "run": 2,
+          "retrieved_requested_fact": "PASS",
+          "names_source": "PASS",
+          "named_document_contains_requested_fact": "PASS",
+          "explicit_sunday_uncertainty": false,
+          "contradictory_monday_uncertainty": false
+        },
+        {
+          "question": "How often does the road to Elder Ness flood?",
+          "run": 3,
+          "retrieved_requested_fact": "PASS",
+          "names_source": "PASS",
+          "named_document_contains_requested_fact": "PASS",
+          "explicit_sunday_uncertainty": false,
+          "contradictory_monday_uncertainty": false
+        },
+        {
+          "question": "Where can I eat in Kestrelford on a Sunday evening?",
+          "run": 1,
+          "retrieved_requested_fact": "PASS",
+          "names_source": "PASS",
+          "named_document_contains_requested_fact": "PASS",
+          "explicit_sunday_uncertainty": true,
+          "contradictory_monday_uncertainty": false
+        },
+        {
+          "question": "Where can I eat in Kestrelford on a Sunday evening?",
+          "run": 2,
+          "retrieved_requested_fact": "PASS",
+          "names_source": "PASS",
+          "named_document_contains_requested_fact": "PASS",
+          "explicit_sunday_uncertainty": true,
+          "contradictory_monday_uncertainty": false
+        },
+        {
+          "question": "Where can I eat in Kestrelford on a Sunday evening?",
+          "run": 3,
+          "retrieved_requested_fact": "PASS",
+          "names_source": "PASS",
+          "named_document_contains_requested_fact": "PASS",
+          "explicit_sunday_uncertainty": true,
+          "contradictory_monday_uncertainty": false
+        }
+      ],
+      "criteria": {
+        "1": [
+          5,
+          5,
+          5
+        ],
+        "2": [
+          5,
+          5,
+          5
+        ],
+        "3": 5,
+        "4": {
+          "word_boundary_violations": 0,
+          "sample_section_starts": 4
+        },
+        "5": [
+          5,
+          5,
+          5
+        ]
+      },
+      "verdicts": {
+        "1": "MET",
+        "2": "MET",
+        "3": "MET",
+        "4": "MET",
+        "5": "MET"
+      }
+    },
+    "after_stretch": {
+      "evidence_file": "evidence_2026-09-30_164005_after_stretch.json",
+      "questions": [
+        {
+          "question": "How much does it cost to climb the church tower in Kestrelford?",
+          "run": 1,
+          "retrieved_requested_fact": "PASS",
+          "names_source": "PASS",
+          "named_document_contains_requested_fact": "PASS",
+          "explicit_sunday_uncertainty": false,
+          "contradictory_monday_uncertainty": false
+        },
+        {
+          "question": "How much does it cost to climb the church tower in Kestrelford?",
+          "run": 2,
+          "retrieved_requested_fact": "PASS",
+          "names_source": "PASS",
+          "named_document_contains_requested_fact": "PASS",
+          "explicit_sunday_uncertainty": false,
+          "contradictory_monday_uncertainty": false
+        },
+        {
+          "question": "How much does it cost to climb the church tower in Kestrelford?",
+          "run": 3,
+          "retrieved_requested_fact": "PASS",
+          "names_source": "PASS",
+          "named_document_contains_requested_fact": "PASS",
+          "explicit_sunday_uncertainty": false,
+          "contradictory_monday_uncertainty": false
+        },
+        {
+          "question": "When did the railway line north of Brightwater close?",
+          "run": 1,
+          "retrieved_requested_fact": "PASS",
+          "names_source": "PASS",
+          "named_document_contains_requested_fact": "PASS",
+          "explicit_sunday_uncertainty": false,
+          "contradictory_monday_uncertainty": false
+        },
+        {
+          "question": "When did the railway line north of Brightwater close?",
+          "run": 2,
+          "retrieved_requested_fact": "PASS",
+          "names_source": "PASS",
+          "named_document_contains_requested_fact": "PASS",
+          "explicit_sunday_uncertainty": false,
+          "contradictory_monday_uncertainty": false
+        },
+        {
+          "question": "When did the railway line north of Brightwater close?",
+          "run": 3,
+          "retrieved_requested_fact": "PASS",
+          "names_source": "PASS",
+          "named_document_contains_requested_fact": "PASS",
+          "explicit_sunday_uncertainty": false,
+          "contradictory_monday_uncertainty": false
+        },
+        {
+          "question": "What times does the pub at Elder Ness serve food?",
+          "run": 1,
+          "retrieved_requested_fact": "PASS",
+          "names_source": "PASS",
+          "named_document_contains_requested_fact": "PASS",
+          "explicit_sunday_uncertainty": false,
+          "contradictory_monday_uncertainty": true
+        },
+        {
+          "question": "What times does the pub at Elder Ness serve food?",
+          "run": 2,
+          "retrieved_requested_fact": "PASS",
+          "names_source": "PASS",
+          "named_document_contains_requested_fact": "PASS",
+          "explicit_sunday_uncertainty": false,
+          "contradictory_monday_uncertainty": true
+        },
+        {
+          "question": "What times does the pub at Elder Ness serve food?",
+          "run": 3,
+          "retrieved_requested_fact": "PASS",
+          "names_source": "PASS",
+          "named_document_contains_requested_fact": "PASS",
+          "explicit_sunday_uncertainty": false,
+          "contradictory_monday_uncertainty": true
+        },
+        {
+          "question": "How often does the road to Elder Ness flood?",
+          "run": 1,
+          "retrieved_requested_fact": "PASS",
+          "names_source": "PASS",
+          "named_document_contains_requested_fact": "PASS",
+          "explicit_sunday_uncertainty": false,
+          "contradictory_monday_uncertainty": false
+        },
+        {
+          "question": "How often does the road to Elder Ness flood?",
+          "run": 2,
+          "retrieved_requested_fact": "PASS",
+          "names_source": "PASS",
+          "named_document_contains_requested_fact": "PASS",
+          "explicit_sunday_uncertainty": false,
+          "contradictory_monday_uncertainty": false
+        },
+        {
+          "question": "How often does the road to Elder Ness flood?",
+          "run": 3,
+          "retrieved_requested_fact": "PASS",
+          "names_source": "PASS",
+          "named_document_contains_requested_fact": "PASS",
+          "explicit_sunday_uncertainty": false,
+          "contradictory_monday_uncertainty": false
+        },
+        {
+          "question": "Where can I eat in Kestrelford on a Sunday evening?",
+          "run": 1,
+          "retrieved_requested_fact": "PASS",
+          "names_source": "PASS",
+          "named_document_contains_requested_fact": "PASS",
+          "explicit_sunday_uncertainty": true,
+          "contradictory_monday_uncertainty": false
+        },
+        {
+          "question": "Where can I eat in Kestrelford on a Sunday evening?",
+          "run": 2,
+          "retrieved_requested_fact": "PASS",
+          "names_source": "PASS",
+          "named_document_contains_requested_fact": "PASS",
+          "explicit_sunday_uncertainty": true,
+          "contradictory_monday_uncertainty": false
+        },
+        {
+          "question": "Where can I eat in Kestrelford on a Sunday evening?",
+          "run": 3,
+          "retrieved_requested_fact": "PASS",
+          "names_source": "PASS",
+          "named_document_contains_requested_fact": "PASS",
+          "explicit_sunday_uncertainty": true,
+          "contradictory_monday_uncertainty": false
+        }
+      ],
+      "criteria": {
+        "1": [
+          5,
+          5,
+          5
+        ],
+        "2": [
+          5,
+          5,
+          5
+        ],
+        "3": 5,
+        "4": {
+          "word_boundary_violations": 0,
+          "sample_section_starts": 4
+        },
+        "5": [
+          5,
+          5,
+          5
+        ]
+      },
+      "verdicts": {
+        "1": "MET",
+        "2": "MET",
+        "3": "MET",
+        "4": "MET",
+        "5": "MET"
+      }
+    }
+  }
+}
