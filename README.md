@@ -313,7 +313,69 @@ I will compare `before` to `after` with all five questions run three times and a
 
 After the primary comparison, I will make exactly one further change: reduce `config.py::TOP_K` from 5 to 3. I will measure it against the completed primary `after` state, retaining the prompt improvement, with a full `after_stretch` evaluation. This tests whether a smaller context retains the required facts and factual citations while reducing retrieved noise and measured prompt tokens. I predict no acceptance-criterion gain because the baseline already passes. Any quality or token change will be reported as measured, including regressions. No gate tuning, hybrid search, chunking, or other feature will be bundled with this comparison.
 
-The primary prompt change and stretch top-k change will be separate commits and separate full evaluations. Results will be added below.
+The primary prompt change and stretch top-k change will be separate commits and separate full evaluations. Results are recorded below.
+
+### Primary implementation and Run Log - After
+
+The only system diff in this comparison is one additional rule in `generate.py::GROUNDING_INSTRUCTION`. Top-k remains 5 and threshold remains 0.6; the 94-chunk index, corpus, questions, and both models are unchanged. No new index was needed.
+
+| Criterion | Original target | Run 1 | Run 2 | Run 3 | Verdict |
+|---|---|---|---|---|---|
+| 1. Retrieved chunks contain the answer | At least 4 of 5 | 5/5 | 5/5 | 5/5 | MET |
+| 2. Every answer names a source | Every in-scope answer, 5 of 5 | 5/5 | 5/5 | 5/5 | MET |
+| 3. Gate stops out-of-corpus questions | At least 4 of 5 | 5/5 | 5/5 | 5/5 | MET |
+| 4. Chunk word boundaries and section starts | No mid-word boundaries; at least 4 of 5 section starts | 0 violations; 4/5 | 0 violations; 4/5 | 0 violations; 4/5 | MET |
+| 5. Sources named contain the fact | At least 4 of 5 questions | 5/5 | 5/5 | 5/5 | MET |
+
+Criteria 3 and 4 are each measured once and repeated in the columns for the same deterministic reasons as baseline. Manual per-question labels for retrieval, source naming, and factual citation are PASS in all three runs for every question; required facts and cited source documents match the baseline support table.
+
+#### Actual primary after outputs
+
+**Criterion 1:** `store.py::search`, `chunker.py::split_documents`, Q5 run 1, `guide_eating.md#1`:
+
+```text
+Eating across the region — Opening hours
+
+This catches visitors out more than anything else. Outside Marchwood, kitchens
+across the region stop serving at 9pm and often earlier. Kestrelford's pubs
+serve 12 to 2 and 6 to 8:30 and there is nowhere to eat at all outside those
+windows. Elder Ness has one pub, closed Mondays.
+
+Sunday evening is the hardest meal to find anywhere except Marchwood and
+Thornby Wells.
+```
+
+**Criterion 2:** `generate.py::answer_from_chunks`, Q1 run 1:
+
+```text
+It costs £2 to climb the church tower in Kestrelford (Source: guide_kestrelford.md).
+```
+
+**Criterion 3:** `run_eval.py::check_out_of_scope` / `gate.py::check`, Mongolia question, best distance 0.8083643325580883, refused:
+
+```text
+I don't have enough information about that.
+```
+
+**Criterion 4:** `chunker.py::split_documents`, audited by `tools/audit_chunks.py::audit`, guide_corry_vale.md#5:
+
+```text
+Corry Vale — Where to stay
+
+Perhaps thirty beds in the entire valley, spread across two pubs and a handful of farmhouse rooms. In summer these are booked months ahead. Camping is permitted on two marked fields and nowhere else.
+```
+
+**Criterion 5:** `generate.py::answer_from_chunks`, Q5 run 1; the cited factual hours and Sunday caveat appear in the chunk above:
+
+```text
+Based on the provided documents, Kestrelford's pubs serve food between 12 and 2 and again between 6 and 8:30, but outside those windows there is nowhere to eat at all. However, Sunday evening availability is unconfirmed as Sunday evening is noted generally as the hardest meal to find anywhere except Marchwood and Thornby Wells. *(Source: guide_kestrelford.md and guide_eating.md)*
+```
+
+All 15 complete answers and retrieved chunks: [primary after report](results/run_2026-09-30_163802_after.md), [JSON evidence](results/evidence_2026-09-30_163744_after.json), and [chunk audit](results/chunks-after.json). The evaluation made 15 real model calls, zero cache hits.
+
+**Did it help?** The five original criteria stayed MET with identical scores. The supplementary Sunday-uncertainty observation improved from **0/3 to 3/3**: every after answer explicitly states that Sunday availability is unconfirmed. This is a small, exploratory result on one question, not proof of improvement on unseen questions. All primary after retrieved chunks and distances match baseline, localizing the observed wording change to generation. Prompt tokens increased from **8,358 to 9,078** (+720, 8.6%) because of the added instruction; output tokens changed from 714 to 709.
+
+The next comparison will execute the previously declared stretch change, top-k 5 to 3, with this prompt held fixed.
 
 ## What's Still Broken
 

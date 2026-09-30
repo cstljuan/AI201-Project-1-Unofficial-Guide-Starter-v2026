@@ -279,6 +279,7 @@ Rules:
 - Use only the information in the documents below. Do not use anything you know from elsewhere.
 - If the documents don't cover the question, say you don't have enough information. Do not guess.
 - Name the document your answer came from, using the filename given in each excerpt.
+- General opening hours do not confirm service on a particular day. If the question names a day and the documents do not confirm service that day, explicitly say that day's availability is unconfirmed, even when giving the general hours.
 - Be brief. Two or three sentences is usually enough."""
 
 
