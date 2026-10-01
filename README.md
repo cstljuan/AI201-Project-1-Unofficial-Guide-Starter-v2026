@@ -181,7 +181,7 @@ chunks of unbounded size.
 
 # Unit 2
 
-This work continues the same Unit 1 fork: https://github.com/cstljuan/ai201-project1-unofficial-guide-starter-v2026.
+This work continues the same Unit 1 fork: https://github.com/cstljuan/AI201-Project-1-Unofficial-Guide-Starter-v2026.
 The original criteria and questions were committed in `00290f6`, before the heading-aware chunker in `54dd83b` and the Unit 1 write-up in `5e9663f`. All Unit 1 content and commits are preserved. `criteria.md` and `questions.py` are unchanged.
 
 ## Run Log - Before
@@ -496,8 +496,8 @@ For **criterion 1**, I would require 5/5 retrieval coverage and choose at least 
 - `results/` contains complete baseline, primary after, and stretch after evidence, full answers, retrieved chunks and distances, gate decisions, and chunk audits. Each phase has 15 uncached generated answers and five deterministic out-of-scope measurements.
 - The README includes all five criteria in each run table, actual outputs with producing file/function, verdict explanations, diagnoses and their limits, two separately measured changes, remaining work, reflection, and AI disclosure.
 - Unit 2 has at least four new milestone commits on top of `5e9663f`; the history is not rewritten.
-- GitHub confirms this is the existing `cstljuan` fork of CodePath's starter; the Unit 1 commit `5e9663f` is attributed to the GitHub account `cstljuan`. The same existing remote URL is the URL to use again: **https://github.com/cstljuan/ai201-project1-unofficial-guide-starter-v2026**. A Unit 1 course-portal submission receipt is not present in the repository or vault, so I cannot independently verify the URL entered in that form.
-- The original checkout remains under `~/Projects/CodePath/AI201/ai201-project1-unofficial-guide-starter-v2026`. `~/Projects/CodePath/AI201/Unit-2/project` is a link to this same checkout, and `unit2/README.md` is a committed module entry point.
+- GitHub confirms this is the existing `cstljuan` fork of CodePath's starter; the Unit 1 commit `5e9663f` is attributed to the GitHub account `cstljuan`. The same existing remote URL, now title-cased, is the URL to use again: **https://github.com/cstljuan/AI201-Project-1-Unofficial-Guide-Starter-v2026**. A Unit 1 course-portal submission receipt is not present in the repository or vault, so I cannot independently verify the URL entered in that form.
+- The original checkout remains under `~/Projects/CodePath/AI201/AI201-Project-1-Unofficial-Guide-Starter-v2026`. `~/Projects/CodePath/AI201/Unit-2/project` is a link to this same checkout, and `unit2/README.md` is a committed module entry point. The former lowercase checkout path remains a symlink for compatibility.
 - The six Unit 2 milestone commits were initially held locally for review. After review, the completed work was pushed to this same fork at the user's request. No course-portal submission was performed; submitting this existing URL remains the final course step.
 
 ### Reproducing the measured states
